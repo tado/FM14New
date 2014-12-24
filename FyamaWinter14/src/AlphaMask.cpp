@@ -81,8 +81,8 @@ void AlphaMask::maskRect(){
     //float maskOffsetX =  ofMap(app->oscControl->controlVal[3], 0, 127, -mask.getWidth(), mask.getWidth() / 3.0);
     //float maskOffsetY =  ofMap(app->oscControl->controlVal[3], 0, 125, -mask.getHeight(), mask.getHeight() / 3.0);
     
-    float maskOffsetX = mask.getWidth() / 5.0;
-    float maskOffsetY = mask.getHeight() / 4.5;
+    float maskOffsetX = mask.getWidth() / 5.5;
+    float maskOffsetY = mask.getHeight() / 5.7;
     
     glMultiTexCoord2d(GL_TEXTURE0_ARB, 0, 0);
     glMultiTexCoord2d(GL_TEXTURE1_ARB, maskOffsetX, maskOffsetY);
