@@ -1,0 +1,10 @@
+<Widget>
+    <Kind>42</Kind>
+    <Name>DELAY</Name>
+    <Value>50</Value>
+</Widget>
+<Widget>
+    <Kind>42</Kind>
+    <Name>MIX</Name>
+    <Value>255</Value>
+</Widget>

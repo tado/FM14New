@@ -1,0 +1,31 @@
+<Widget>
+    <Kind>4</Kind>
+    <Name>CIRCLE SIZE</Name>
+    <Value>1080.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>LINE WIDTH</Name>
+    <Value>2.395833254</Value>
+</Widget>
+<Widget>
+    <Kind>42</Kind>
+    <Name>SKIP</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>HUE</Name>
+    <HighValue>203.203125000</HighValue>
+    <LowValue>0.000000000</LowValue>
+</Widget>
+<Widget>
+    <Kind>42</Kind>
+    <Name>SATURATION</Name>
+    <Value>255</Value>
+</Widget>
+<Widget>
+    <Kind>42</Kind>
+    <Name>BRIGHTNESS</Name>
+    <Value>205</Value>
+</Widget>

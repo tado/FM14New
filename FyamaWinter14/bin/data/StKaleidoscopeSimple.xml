@@ -1,0 +1,25 @@
+<Widget>
+    <Kind>4</Kind>
+    <Name>SEGMENT</Name>
+    <Value>5.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>NOISE AMP</Name>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>ZOOM</Name>
+    <Value>2.020833254</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>SAT</Name>
+    <Value>0.479166657</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>BR</Name>
+    <Value>1.000000000</Value>
+</Widget>

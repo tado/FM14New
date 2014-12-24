@@ -1,0 +1,35 @@
+<Widget>
+    <Kind>4</Kind>
+    <Name>RADIUS</Name>
+    <Value>89.375000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>CIRCLE SCALE</Name>
+    <Value>0.468750000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>INTERPORATE</Name>
+    <Value>0.437500000</Value>
+</Widget>
+<Widget>
+    <Kind>42</Kind>
+    <Name>FADE</Name>
+    <Value>99</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>HUE</Name>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>SAT</Name>
+    <Value>8.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>BR</Name>
+    <Value>0.145833328</Value>
+</Widget>

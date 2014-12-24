@@ -1,0 +1,35 @@
+<Widget>
+    <Kind>4</Kind>
+    <Name>TOP SHIFT</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>NOISE SCALE</Name>
+    <Value>4.171875000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>SHIFT SPEED</Name>
+    <Value>1.479166627</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>ZOOM</Name>
+    <Value>3.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>HUE</Name>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>SAT</Name>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>BR</Name>
+    <Value>1.000000000</Value>
+</Widget>

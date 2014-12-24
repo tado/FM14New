@@ -1,0 +1,10 @@
+ofxOpenCv
+ofxOsc
+ofxXmlSettings
+ofxBlackmagic
+ofxCv
+ofxFft
+ofxLiquidFun
+ofxStateMachine
+ofxSyphon
+ofxUI

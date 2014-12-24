@@ -1,0 +1,25 @@
+<Widget>
+    <Kind>42</Kind>
+    <Name>MIX</Name>
+    <Value>255</Value>
+</Widget>
+<Widget>
+    <Kind>22</Kind>
+    <Name>INPUT SOURCE</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>BLACKMAGIC</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>INTERNAL CAM</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>MOVIE</Name>
+    <Value>0</Value>
+</Widget>

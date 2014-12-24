@@ -1,0 +1,46 @@
+<Widget>
+    <Kind>4</Kind>
+    <Name>POWER</Name>
+    <Value>0.097656250</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>GRAVITY</Name>
+    <Value>100.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>STRENGTH</Name>
+    <Value>10.833333969</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>STIFFNESS</Name>
+    <Value>0.033333335</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>DAMPING</Name>
+    <Value>0.979166627</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>WIDTH</Name>
+    <Value>20.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>HUE</Name>
+    <HighValue>183.281250000</HighValue>
+    <LowValue>7.968752861</LowValue>
+</Widget>
+<Widget>
+    <Kind>42</Kind>
+    <Name>SATURATION</Name>
+    <Value>143</Value>
+</Widget>
+<Widget>
+    <Kind>42</Kind>
+    <Name>BRIGHTNESS</Name>
+    <Value>255</Value>
+</Widget>
