@@ -109,7 +109,7 @@ void StCvOpMeshColor::update(){
         
 
         float controlHue;
-        controlHue = ofMap(app->oscControl->controlVal[5], 0, 127, 1.2, 0.7);
+        controlHue = ofMap(app->oscControl->controlVal[5], 0, 127, 1.125, 0.7);
         int h = controlHue;
         col.setHsb(int(controlHue * 255) % 255, 255, 255);
         

@@ -1,27 +1,27 @@
 <Widget>
     <Kind>4</Kind>
     <Name>PYR SCALE</Name>
-    <Value>0.288749993</Value>
+    <Value>0.499999970</Value>
 </Widget>
 <Widget>
     <Kind>42</Kind>
     <Name>LEVELS</Name>
-    <Value>4</Value>
+    <Value>5</Value>
 </Widget>
 <Widget>
     <Kind>42</Kind>
     <Name>WIN SIZE</Name>
-    <Value>21</Value>
+    <Value>18</Value>
 </Widget>
 <Widget>
     <Kind>42</Kind>
     <Name>ITERATION</Name>
-    <Value>1</Value>
+    <Value>2</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>GAUSS</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -36,7 +36,7 @@
 <Widget>
     <Kind>42</Kind>
     <Name>MAX</Name>
-    <Value>21354</Value>
+    <Value>20000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -46,22 +46,27 @@
 <Widget>
     <Kind>4</Kind>
     <Name>RADIUS</Name>
-    <Value>3.333333492</Value>
+    <Value>1.666666746</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>FRICTION</Name>
-    <Value>0.755208373</Value>
+    <Value>0.520833313</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>ACCEL</Name>
-    <Value>0.208333328</Value>
+    <Value>0.229166672</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>WIND</Name>
+    <Value>0.048958335</Value>
 </Widget>
 <Widget>
     <Kind>42</Kind>
     <Name>FADE</Name>
-    <Value>20</Value>
+    <Value>12</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -71,10 +76,10 @@
 <Widget>
     <Kind>4</Kind>
     <Name>SAT</Name>
-    <Value>4.000000000</Value>
+    <Value>3.958333254</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>BR</Name>
-    <Value>2.000000000</Value>
+    <Value>1.989583373</Value>
 </Widget>

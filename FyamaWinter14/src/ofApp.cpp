@@ -138,8 +138,8 @@ void ofApp::setup(){
     gui->setVisible(false);
     ofAddListener(gui->newGUIEvent,this,&ofApp::guiEvent);
     
-    // 1920 x 630
-    screenMode = 0;
+    // 16:9 mode
+    screenMode = 1;
 }
 
 //--------------------------------------------------------------
