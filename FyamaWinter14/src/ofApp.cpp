@@ -139,7 +139,7 @@ void ofApp::setup(){
     ofAddListener(gui->newGUIEvent,this,&ofApp::guiEvent);
     
     // 16:9 mode
-    screenMode = 1;
+    screenMode = 0;
 }
 
 //--------------------------------------------------------------
@@ -212,11 +212,7 @@ void ofApp::keyPressed(int key){
             stateMachine.getSharedData().guiVisible = false :stateMachine.getSharedData().guiVisible = true;
             break;
         case 'z':
-            if (screenMode == 0) {
-                screenMode = 1;
-            } else {
-                screenMode = 0;
-            }
+            screenMode = (screenMode + 1) % 3;
             break;
     }
 }

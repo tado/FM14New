@@ -84,19 +84,20 @@ void BlackmagicCapture::draw() {
 void BlackmagicCapture::drawSub(){
     ofApp *app = ((ofApp*)ofGetAppPtr());
     if (app->screenMode == 0) {
-        drawTop = sourceTop = 223 / 2.0;
-        drawHeight = sourceHeight = 630 / 2.0;
-    } else {
         drawTop = sourceTop = 0;
         drawHeight = sourceHeight = 1080 / 2.0;
+    } else if (app->screenMode == 1) {
+        drawTop = sourceTop = 223 / 2.0;
+        drawHeight = sourceHeight = 630 / 2.0;
     }
     
-    drawWidth = sourceWidth = ofGetWidth();
-    
-    ofPushMatrix();
-    ofScale(1.0, 2.0);
-    fbo.getTextureReference().drawSubsection(0, drawTop, drawWidth, drawHeight, 0, sourceTop, sourceWidth, sourceHeight);
-    ofPopMatrix();
+    if (app->screenMode == 0 || app->screenMode == 1) {
+        drawWidth = sourceWidth = ofGetWidth();
+        ofPushMatrix();
+        ofScale(1.0, 2.0);
+        fbo.getTextureReference().drawSubsection(0, drawTop, drawWidth, drawHeight, 0, sourceTop, sourceWidth, sourceHeight);
+        ofPopMatrix();
+    }
 }
 
 void BlackmagicCapture::changeInput(int _inputMode){
