@@ -55,6 +55,7 @@ void AlphaMask::draw(){
 }
 
 void AlphaMask::maskRect(){
+    int srcMargin = 100;
     ofApp *app = ((ofApp*)ofGetAppPtr());
     srcTex = app->blackmagic->colorTexture;
     
@@ -62,7 +63,7 @@ void AlphaMask::maskRect(){
     srcFbo.allocate(1920, 1080);
     srcFbo.begin();
     ofClear(0, 0, 0);
-    srcTex.draw(0, 0, 1920, 1080);
+    srcTex.draw(0, 0);
     srcFbo.end();
     
     fbo.begin();
@@ -77,8 +78,11 @@ void AlphaMask::maskRect(){
     
     glBegin(GL_QUADS);
     
-    float maskOffsetX =  ofMap(app->oscControl->controlVal[3], 0, 127, -mask.getWidth(), mask.getWidth() / 3.0);
-    float maskOffsetY =  ofMap(app->oscControl->controlVal[3], 0, 127, -mask.getHeight(), mask.getHeight() / 3.0);
+    //float maskOffsetX =  ofMap(app->oscControl->controlVal[3], 0, 127, -mask.getWidth(), mask.getWidth() / 3.0);
+    //float maskOffsetY =  ofMap(app->oscControl->controlVal[3], 0, 125, -mask.getHeight(), mask.getHeight() / 3.0);
+    
+    float maskOffsetX = mask.getWidth() / 5.0;
+    float maskOffsetY = mask.getHeight() / 4.5;
     
     glMultiTexCoord2d(GL_TEXTURE0_ARB, 0, 0);
     glMultiTexCoord2d(GL_TEXTURE1_ARB, maskOffsetX, maskOffsetY);
