@@ -214,6 +214,9 @@ void ofApp::keyPressed(int key){
         case 'z':
             screenMode = (screenMode + 1) % 3;
             break;
+        case 'x':
+            alphaMask->rectMaskNum = (alphaMask->rectMaskNum + 1) % 3;
+            break;
     }
 }
 

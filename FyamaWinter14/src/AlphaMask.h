@@ -10,7 +10,9 @@ public:
     void maskRect();
     
     ofImage mask;
-    ofImage mask2;
+    ofImage rectMask[3];
+    int rectMaskNum;
+    
     ofShader maskShader;
     ofTexture srcTex;
     ofFbo fbo;

@@ -10,7 +10,10 @@ AlphaMask::AlphaMask(){
     fbo.end();
     
     mask.loadImage("mask.png");
-    mask2.loadImage("mask2.png");
+    rectMask[0].loadImage("rectMask0.png");
+    rectMask[1].loadImage("rectMask1.png");
+    rectMask[2].loadImage("rectMask2.png");
+    rectMaskNum = 0;
 
     maskShader.load("composite");
     maskShader.begin();
@@ -74,15 +77,13 @@ void AlphaMask::maskRect(){
     srcFbo.getTextureReference().bind();
     
     glActiveTexture(GL_TEXTURE1_ARB);
-    mask2.getTextureReference().bind();
+    rectMask[rectMaskNum].getTextureReference().bind();
     
     glBegin(GL_QUADS);
     
-    //float maskOffsetX =  ofMap(app->oscControl->controlVal[3], 0, 127, -mask.getWidth(), mask.getWidth() / 3.0);
-    //float maskOffsetY =  ofMap(app->oscControl->controlVal[3], 0, 125, -mask.getHeight(), mask.getHeight() / 3.0);
-    
-    float maskOffsetX = mask.getWidth() / 5.5;
-    float maskOffsetY = mask.getHeight() / 5.7;
+    float maskOffsetX =  ofMap(app->oscControl->controlVal[3], 0, 127, -mask.getWidth(), mask.getWidth() / 4.5);
+    //float maskOffsetY =  ofMap(app->oscControl->controlVal[3], 0, 127, -mask.getHeight(), mask.getHeight() / 4.5);
+    float maskOffsetY =  ofMap(app->oscControl->controlVal[3], 0, 127, -mask.getWidth(), mask.getWidth() / 4.5);
     
     glMultiTexCoord2d(GL_TEXTURE0_ARB, 0, 0);
     glMultiTexCoord2d(GL_TEXTURE1_ARB, maskOffsetX, maskOffsetY);
@@ -94,16 +95,16 @@ void AlphaMask::maskRect(){
     
     glMultiTexCoord2d(GL_TEXTURE0_ARB, srcTex.getWidth(), srcTex.getHeight());
     glMultiTexCoord2d(GL_TEXTURE1_ARB, mask.getWidth() - maskOffsetX, mask.getHeight() - maskOffsetY);
-    glVertex2f(1520, 853);
+    glVertex2f(1520, 856);
     
     glMultiTexCoord2d(GL_TEXTURE0_ARB, 0, srcTex.getHeight());
     glMultiTexCoord2d(GL_TEXTURE1_ARB, maskOffsetX, mask.getHeight() - maskOffsetY);
-    glVertex2f(400, 853);
+    glVertex2f(400, 856);
     
     glEnd();
     
     glActiveTexture(GL_TEXTURE1_ARB);
-    mask2.getTextureReference().unbind();
+    rectMask[rectMaskNum].getTextureReference().unbind();
     
     glActiveTexture(GL_TEXTURE0_ARB);
     srcFbo.getTextureReference().unbind();
