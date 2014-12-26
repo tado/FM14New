@@ -44,7 +44,7 @@
 //--------------------------------------------------------------
 void ofApp::setup(){
     ofBackground(0);
-    // ofSetWindowPosition(1920, 0);
+    ofSetWindowPosition(1920, 0);
     
     // FFT
     bufferSize = 1024;
