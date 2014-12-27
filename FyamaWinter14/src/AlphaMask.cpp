@@ -63,10 +63,13 @@ void AlphaMask::maskRect(){
     srcTex = app->blackmagic->colorTexture;
     
     ofFbo srcFbo;
-    srcFbo.allocate(1920, 1080);
+    srcFbo.allocate(1920, 1080 / 2.0);
     srcFbo.begin();
     ofClear(0, 0, 0);
+    ofPushMatrix();
+    ofScale(1.0, 0.5);
     srcTex.draw(0, 0);
+    ofPopMatrix();
     srcFbo.end();
     
     fbo.begin();
@@ -93,11 +96,11 @@ void AlphaMask::maskRect(){
     glMultiTexCoord2d(GL_TEXTURE1_ARB, mask.getWidth() - maskOffsetX, maskOffsetY);
     glVertex2f(1520, 223);
     
-    glMultiTexCoord2d(GL_TEXTURE0_ARB, srcTex.getWidth(), srcTex.getHeight());
+    glMultiTexCoord2d(GL_TEXTURE0_ARB, srcTex.getWidth(), srcTex.getHeight() / 2.0);
     glMultiTexCoord2d(GL_TEXTURE1_ARB, mask.getWidth() - maskOffsetX, mask.getHeight() - maskOffsetY);
     glVertex2f(1520, 856);
     
-    glMultiTexCoord2d(GL_TEXTURE0_ARB, 0, srcTex.getHeight());
+    glMultiTexCoord2d(GL_TEXTURE0_ARB, 0, srcTex.getHeight() / 2.0);
     glMultiTexCoord2d(GL_TEXTURE1_ARB, maskOffsetX, mask.getHeight() - maskOffsetY);
     glVertex2f(400, 856);
     
