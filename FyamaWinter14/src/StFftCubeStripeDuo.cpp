@@ -16,7 +16,7 @@ void StFftCubeStripeDuo::setup(){
     gui->addSlider("SHIFT SPEED", 0.0, 2.0, 1.0);
     gui->addSlider("ZOOM", 0.0, 3.0, 1.0);
     gui->addSpacer();
-    gui->addSlider("HUE", 0, 1.0, 1.0);
+    //gui->addSlider("HUE", 0, 1.0, 1.0);
     gui->addSlider("SAT", 0, 2.0, 1.0);
     gui->addSlider("BR", 0, 2.0, 1.0);
     gui->addSpacer();
@@ -77,7 +77,7 @@ void StFftCubeStripeDuo::draw(){
     ofxUISlider *gtopshift = (ofxUISlider *)gui->getWidget("TOP SHIFT"); float topshift = gtopshift->getValue();
     ofxUISlider *gshiftspeed = (ofxUISlider *)gui->getWidget("SHIFT SPEED"); float shiftspeed = gshiftspeed->getValue();
     ofxUISlider *gzoom = (ofxUISlider *)gui->getWidget("ZOOM"); float zoom = gzoom->getValue();
-    ofxUISlider *ghue = (ofxUISlider *)gui->getWidget("HUE"); float hue = ghue->getValue();
+    //ofxUISlider *ghue = (ofxUISlider *)gui->getWidget("HUE"); float hue = ghue->getValue();
     ofxUISlider *gsat = (ofxUISlider *)gui->getWidget("SAT"); float sat = gsat->getValue();
     ofxUISlider *gbr = (ofxUISlider *)gui->getWidget("BR"); float br = gbr->getValue();
     
@@ -91,21 +91,21 @@ void StFftCubeStripeDuo::draw(){
     ofClear(0,0,0);
     ofEnableBlendMode(OF_BLENDMODE_ADD);
     float controlHue;
-    controlHue = ofMap(app->oscControl->controlVal[5], 0, 127, 0, 0.6);
+    controlHue = ofMap(app->oscControl->controlVal[5], 0, 127, 0, 0.65);
     ofColor col; col.setHsb(controlHue * 255, sat * 255, br * 255);
     ofSetColor(col);
     glDisable(GL_CULL_FACE);
     tex.bind();
     
     ofPushMatrix();
-    ofTranslate(-ofGetWidth()/6, 0);
+    ofTranslate(-ofGetWidth()/3.5, 0);
     ofRotateX(rotationL.x * ofGetElapsedTimef());
     ofRotateY(rotationL.y * ofGetElapsedTimef());
     ofRotateZ(rotationL.z * ofGetElapsedTimef());
     mesh.draw();
     ofPopMatrix();
     ofPushMatrix();
-    ofTranslate(ofGetWidth()/6, 0);
+    ofTranslate(ofGetWidth()/3.5, 0);
     ofRotateX(rotationR.x * ofGetElapsedTimef());
     ofRotateY(rotationR.y * ofGetElapsedTimef());
     ofRotateZ(rotationR.z * ofGetElapsedTimef());

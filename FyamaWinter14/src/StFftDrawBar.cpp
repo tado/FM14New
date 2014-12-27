@@ -12,9 +12,9 @@ void StFftDrawBar::setup(){
     gui->addLabel("FFT Draw Bar");
     gui->addSpacer();
     gui->addIntSlider("PLOT HEIGHT", 0, ofGetHeight(), 500);
-    gui->addRangeSlider("HUE", 0, 255, 0, 255);
-    gui->addIntSlider("SATURATION", 0, 255, 100);
-    gui->addIntSlider("BRIGHTNESS", 0, 255, 100);
+    //gui->addRangeSlider("HUE", 0, 255, 0, 255);
+    gui->addSlider("SATURATION", 0, 2.0, 0.2);
+    gui->addSlider("BRIGHTNESS", 0, 1.0, 0.1);
     gui->addIntSlider("REPEAT", 1, 10, 6);
     gui->addSlider("ZOOM", 1.0, 5.0, 1.2);
     gui->addSlider("LINE WIDTH", 0.1, 10.0, 2.0);
@@ -46,8 +46,8 @@ void StFftDrawBar::draw() {
 }
 
 void StFftDrawBar::plot(vector<float>& buffer, float scale, float offset) {
-    ofxUIIntSlider *gsaturation = (ofxUIIntSlider *)gui->getWidget("SATURATION"); int saturation = gsaturation->getValue();
-    ofxUIIntSlider *gbr = (ofxUIIntSlider *)gui->getWidget("BRIGHTNESS"); int brightness = gbr->getValue();
+    ofxUISlider *gsaturation = (ofxUISlider *)gui->getWidget("SATURATION"); float saturation = gsaturation->getValue();
+    ofxUISlider *gbr = (ofxUISlider *)gui->getWidget("BRIGHTNESS"); float brightness = gbr->getValue();
     ofxUIIntSlider *grep = (ofxUIIntSlider *)gui->getWidget("REPEAT"); int rep = grep->getValue();
     ofxUISlider *gzoom = (ofxUISlider *)gui->getWidget("ZOOM"); float zoom = gzoom->getValue();
     ofxUISlider *glinewidth = (ofxUISlider *)gui->getWidget("LINE WIDTH"); float linewidth = glinewidth->getValue();
@@ -62,16 +62,16 @@ void StFftDrawBar::plot(vector<float>& buffer, float scale, float offset) {
     ofSetLineWidth(linewidth * zoom);
     
     int controlRep = ofMap(app->oscControl->controlVal[4], 0, 127, 1, 10);
-    int controlHue = ofMap(app->oscControl->controlVal[5], 0, 127, 0, 160);
+    float controlHue = ofMap(app->oscControl->controlVal[5], 0, 127, 0, 0.65);
     
     int hueLow = controlHue;
     int hueHigh = hueLow;
     
     for (int j = 0; j < controlRep; j++) {
         for (int i = 0; i < n; i++) {
-            float hue = ofMap(i, 0, app->fft->drawBins.size(), hueLow, hueHigh);
-            int br = ofMap(buffer[i], 0, 1.0, 0, 255 / float(rep)) * brightness / 64.0;
-            col.setHsb(hue, saturation, br);
+            //float hue = ofMap(i, 0, app->fft->drawBins.size(), hueLow, hueHigh);
+            int br = ofMap(buffer[i], 0, 1.0, 0, 255 / float(rep)) * brightness;
+            col.setHsb(controlHue * 255, saturation * 255, br);
             ofSetColor(col);
             ofRect(i / 2.0, -scale / 2.0, linewidth * zoom, scale);
             ofRect(-i / 2.0, -scale / 2.0, linewidth * zoom, scale);

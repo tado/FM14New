@@ -13,9 +13,9 @@ void StFftDrawCircleBlue::setup(){
     gui->addSpacer();
     gui->addSlider("CIRCLE SIZE", 0, ofGetHeight(), 50.0);
     gui->addIntSlider("SKIP", 1, 12, 4);
-    gui->addRangeSlider("HUE", 0, 255, 0, 255);
-    gui->addIntSlider("SATURATION", 0, 255, 100);
-    gui->addSlider("BRIGHTNESS", 0, 20.0, 5.0);
+    //gui->addRangeSlider("HUE", 0, 255, 0, 255);
+    gui->addSlider("SATURATION", 0, 2.0, 0.15);
+    gui->addSlider("BRIGHTNESS", 0, 1.0, 0.1);
     gui->addSpacer();
     gui->addButton("SAVE SETTINGS", false);
     gui->loadSettings("StFftDrawCircleBlue.xml");
@@ -39,27 +39,29 @@ void StFftDrawCircleBlue::draw() {
     ofSetCircleResolution(64);
     ofxUISlider *gcirclesize = (ofxUISlider *)gui->getWidget("CIRCLE SIZE"); float circlesize = gcirclesize->getValue();
     ofxUIIntSlider *gskip = (ofxUIIntSlider *)gui->getWidget("SKIP"); int skip = gskip->getValue();
-    ofxUIRangeSlider *ghue = (ofxUIRangeSlider *)gui->getWidget("HUE"); float hueLow = ghue->getValueLow(); float hueHigh = ghue->getValueHigh();
-    ofxUIIntSlider *gsaturation = (ofxUIIntSlider *)gui->getWidget("SATURATION"); int saturation = gsaturation->getValue();
+    //ofxUIRangeSlider *ghue = (ofxUIRangeSlider *)gui->getWidget("HUE"); float hueLow = ghue->getValueLow(); float hueHigh = ghue->getValueHigh();
+    ofxUISlider *gsaturation = (ofxUISlider *)gui->getWidget("SATURATION"); float saturation = gsaturation->getValue();
     ofxUISlider *gbrightness = (ofxUISlider *)gui->getWidget("BRIGHTNESS"); float brightness = gbrightness->getValue();
     
     ofEnableBlendMode(OF_BLENDMODE_ADD);
     for (int i = 0; i < app->fft->drawBins.size(); i += skip) {
         float size = ofMap(app->fft->drawBins[i], 0, 1.0, 0, circlesize);
         float x = ofMap(i, 0, app->fft->drawBins.size(), 0, ofGetWidth()/1.2);
-        float hue = ofMap(i, 0, app->fft->drawBins.size(), hueLow, hueHigh);
         ofColor col;
-        col.setHsb(hue, saturation, brightness);
+        
+        float controlHue;
+        controlHue = ofMap(app->oscControl->controlVal[5], 0, 127, 0, 0.65);
+        col.setHsb(controlHue * 255, saturation * 255, brightness * 255);
         ofSetColor(col);
         
         ofPushMatrix();
-        ofTranslate(-ofGetWidth()/5, 0);
+        ofTranslate(-ofGetWidth()/3.5, 0);
         ofCircle(x, 0, size);
         ofCircle(-x, 0, size);
         ofPopMatrix();
         
         ofPushMatrix();
-        ofTranslate(ofGetWidth()/5, 0);
+        ofTranslate(ofGetWidth()/3.5, 0);
         ofCircle(x, 0, size);
         ofCircle(-x, 0, size);
         ofPopMatrix();

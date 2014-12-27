@@ -15,7 +15,7 @@ void StFftBlueBeam::setup(){
     gui->addIntSlider("LENGTH", 1, 40, 10);
     gui->addSlider("THICKNESS", 0.0, 400.0, 100.0);
     gui->addSpacer();
-    gui->addSlider("HUE", 0, 2.0, 1.0);
+    //gui->addSlider("HUE", 0, 2.0, 1.0);
     gui->addSlider("SAT", 0, 2.0, 1.0);
     gui->addSlider("BR", 0, 2.0, 1.0);
     gui->addSpacer();
@@ -51,16 +51,16 @@ void StFftBlueBeam::update(){
     ofxUISlider *gspeed = (ofxUISlider *)gui->getWidget("SPEED"); float speed = gspeed->getValue();
     ofxUIIntSlider *glength = (ofxUIIntSlider *)gui->getWidget("LENGTH"); int length = glength->getValue();
     ofxUISlider *gthick = (ofxUISlider *)gui->getWidget("THICKNESS"); float thick = gthick->getValue();
-    ofxUISlider *ghue = (ofxUISlider *)gui->getWidget("HUE"); float hue = ghue->getValue();
+    //ofxUISlider *ghue = (ofxUISlider *)gui->getWidget("HUE"); float hue = ghue->getValue();
     ofxUISlider *gsat = (ofxUISlider *)gui->getWidget("SAT"); float sat = gsat->getValue();
     ofxUISlider *gbr = (ofxUISlider *)gui->getWidget("BR"); float br = gbr->getValue();
     
     
     float strength = ofMap(app->oscControl->controlVal[4], 0, 127, 0, 2.0);
     
-    float controlHue;
-    controlHue = ofMap(app->oscControl->controlVal[5], 0, 127, 0, 0.6);
-    ofColor col; col.setHsb(controlHue * 255, sat * 255, br * 255);
+    //float controlHue;
+    //controlHue = ofMap(app->oscControl->controlVal[5], 0, 127, 0, 0.6);
+    //ofColor col; col.setHsb(controlHue * 255, sat * 255, br * 255);
     
     float fftSum = 0;
     for (int i = 0; i < app->fft->drawBins.size(); i++) {
@@ -78,13 +78,15 @@ void StFftBlueBeam::update(){
         }
         ribbons[i]->thickness =  app->fft->drawBins[i] * thick * strength;
         ribbons[i]->length = length;
-        ribbons[i]->color = col;
+        //ribbons[i]->color = col;
         ribbons[i]->update(position[i]);
     }
     gui->setVisible(getSharedData().guiVisible);
 }
 
 void StFftBlueBeam::draw(){
+    ofxUISlider *gsat = (ofxUISlider *)gui->getWidget("SAT"); float sat = gsat->getValue();
+    ofxUISlider *gbr = (ofxUISlider *)gui->getWidget("BR"); float br = gbr->getValue();
     
     app->drawFbo->fbo.begin();
     app->drawFbo->blendMode = 1;
@@ -98,9 +100,13 @@ void StFftBlueBeam::draw(){
     ofFill();
     ofRotateZ(45);
    
-    ofSetColor(255);
+    float controlHue;
+    controlHue = ofMap(app->oscControl->controlVal[5], 0, 127, 0, 0.65);
+    ofColor col; col.setHsb(controlHue * 255, sat * 255, br * 255);
+
     for (int i = 0; i < NUM; i++) {
         ribbons[i]->draw();
+        ribbons[i]->color = col;
     }
     post.end();
     app->drawFbo->fbo.end();
