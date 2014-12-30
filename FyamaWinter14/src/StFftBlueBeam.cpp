@@ -105,8 +105,10 @@ void StFftBlueBeam::draw(){
     ofColor col; col.setHsb(controlHue * 255, sat * 255, br * 255);
 
     for (int i = 0; i < NUM; i++) {
+        for (int j = 0; j < ribbons[i]->colors.size(); j++) {
+            ribbons[i]->colors[j] = col;
+        }
         ribbons[i]->draw();
-        ribbons[i]->color = col;
     }
     post.end();
     app->drawFbo->fbo.end();
