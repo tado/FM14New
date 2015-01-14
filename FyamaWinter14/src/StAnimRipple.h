@@ -11,7 +11,7 @@ public:
         loc = _loc;
         zoomSpeed = _zoomSpeed;
         radius = 0;
-        col.setHsb(ofRandom(255), 255, 255, 160);
+        col.setHsb(ofRandom(255), 255, 255, 220);
     }
     
     void update(){
@@ -20,7 +20,6 @@ public:
     
     void draw(){
         ofSetCircleResolution(64);
-        ofSetLineWidth(4.0);
         ofSetColor(col);
         ofCircle(loc, radius);
     }

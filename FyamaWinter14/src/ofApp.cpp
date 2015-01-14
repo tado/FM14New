@@ -41,6 +41,7 @@
 #include "StFftPixelate.h"
 #include "StFftBlueBeam.h"
 #include "StAnimRipple.h"
+#include "StAnimFlow.h"
 
 //--------------------------------------------------------------
 void ofApp::setup(){
@@ -100,6 +101,7 @@ void ofApp::setup(){
     stateMachine.addState<StFftPixelate>();
     stateMachine.addState<StFftBlueBeam>();
     stateMachine.addState<StAnimRipple>();
+    stateMachine.addState<StAnimFlow>();
     
     stateMachine.changeState("StBlank");
     guiVisible = false;

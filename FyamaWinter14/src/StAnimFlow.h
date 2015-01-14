@@ -7,28 +7,43 @@
 
 class FlowObject {
 public:
-    FlowObject(ofVec2f _loc, float _zoomSpeed){
+    FlowObject(ofVec2f _loc, ofVec2f _speed){
         loc = _loc;
-        zoomSpeed = _zoomSpeed;
+        speed = _speed;
         radius = 0;
-        col.setHsb(ofRandom(255), 255, 255, 160);
+        col.setHsb(ofRandom(255), 255, 255, 220);
+        circleRes = int(ofRandom(3, 6));
+        radius = powf(ofRandom(6, 20), 2.0);
+        rotSpeed = ofVec3f(ofRandom(-20, 20),
+                           ofRandom(-20, 20),
+                           ofRandom(-20, 20)
+                           );
+        flowMax = 400;
     }
     
     void update(){
-        radius += zoomSpeed;
+        loc += speed;
     }
     
     void draw(){
-        ofSetCircleResolution(64);
-        ofSetLineWidth(4.0);
+        ofSetCircleResolution(circleRes);
         ofSetColor(col);
-        ofCircle(loc, radius);
+        ofPushMatrix();
+        ofTranslate(loc.x, loc.y, loc.z);
+        ofRotateX(-ofGetElapsedTimef() * rotSpeed.x);
+        ofRotateY(-ofGetElapsedTimef() * rotSpeed.y);
+        ofRotateZ(-ofGetElapsedTimef() * rotSpeed.z);
+        ofCircle(0, 0, radius);
+        ofPopMatrix();
     }
     
-    ofVec2f loc;
+    ofVec3f loc;
+    ofVec3f speed;
     float radius;
-    float zoomSpeed;
     ofColor col;
+    int circleRes;
+    ofVec3f rotSpeed;
+    int flowMax;
 };
 
 

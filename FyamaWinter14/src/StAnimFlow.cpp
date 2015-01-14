@@ -24,14 +24,17 @@ void StAnimFlow::setup(){
 }
 
 void StAnimFlow::update(){
-    if (ofGetFrameNum() % 20 == 0) {
-        FlowObject *flow = new FlowObject(ofVec2f(ofRandom(ofGetWidth()), ofRandom(ofGetHeight())), 10.0);
+    if (ofGetFrameNum() % 5 == 0) {
+        FlowObject *flow = new FlowObject(ofVec3f(-ofGetWidth() / 2.0,
+                                                  ofRandom(ofGetHeight()),
+                                                  ofRandom(ofGetHeight() / 2.0)),
+                                          ofVec3f(ofRandom(7, 10), 0, 0));
         flows.push_back(flow);
     }
     
     for (int i = 0; i < flows.size(); i++) {
         flows[i]->update();
-        if (flows[i]->radius > ofGetWidth() * 1.5) {
+        if (flows.size() > flows[i]->flowMax) {
             flows.pop_front();
         }
     }
