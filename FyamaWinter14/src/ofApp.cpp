@@ -40,6 +40,7 @@
 #include "StFftRibbonCool.h"
 #include "StFftPixelate.h"
 #include "StFftBlueBeam.h"
+#include "StAnimRipple.h"
 
 //--------------------------------------------------------------
 void ofApp::setup(){
@@ -98,6 +99,7 @@ void ofApp::setup(){
     stateMachine.addState<StFftRibbonCool>();
     stateMachine.addState<StFftPixelate>();
     stateMachine.addState<StFftBlueBeam>();
+    stateMachine.addState<StAnimRipple>();
     
     stateMachine.changeState("StBlank");
     guiVisible = false;

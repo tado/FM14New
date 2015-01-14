@@ -46,6 +46,8 @@
 		181634C91A15CE65005E39EB /* VerticalTiltShifPass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 181634AC1A15CE65005E39EB /* VerticalTiltShifPass.cpp */; };
 		181634CA1A15CE65005E39EB /* ZoomBlurPass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 181634AE1A15CE65005E39EB /* ZoomBlurPass.cpp */; };
 		182AD6EF1A084FE7003C3DD8 /* StCvOpMesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 182AD6ED1A084FE7003C3DD8 /* StCvOpMesh.cpp */; };
+		182B32F11A66C42A0094A59D /* StAnimRipple.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 182B32EF1A66C42A0094A59D /* StAnimRipple.cpp */; };
+		182B32F41A66DA8A0094A59D /* StAnimFlow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 182B32F21A66DA8A0094A59D /* StAnimFlow.cpp */; };
 		183C30931A25D4C10041BF0C /* StFftBlueBeam.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 183C30911A25D4C10041BF0C /* StFftBlueBeam.cpp */; };
 		183FC2E51A468E1700F0CA8A /* StCvOpNoiseWrap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 183FC2E31A468E1700F0CA8A /* StCvOpNoiseWrap.cpp */; };
 		1846E4491A16069C00241F18 /* StCvOpNote.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1846E4471A16069C00241F18 /* StCvOpNote.cpp */; };
@@ -384,6 +386,10 @@
 		181634AF1A15CE65005E39EB /* ZoomBlurPass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZoomBlurPass.h; sourceTree = "<group>"; };
 		182AD6ED1A084FE7003C3DD8 /* StCvOpMesh.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StCvOpMesh.cpp; sourceTree = "<group>"; };
 		182AD6EE1A084FE7003C3DD8 /* StCvOpMesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StCvOpMesh.h; sourceTree = "<group>"; };
+		182B32EF1A66C42A0094A59D /* StAnimRipple.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StAnimRipple.cpp; sourceTree = "<group>"; };
+		182B32F01A66C42A0094A59D /* StAnimRipple.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StAnimRipple.h; sourceTree = "<group>"; };
+		182B32F21A66DA8A0094A59D /* StAnimFlow.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StAnimFlow.cpp; sourceTree = "<group>"; };
+		182B32F31A66DA8A0094A59D /* StAnimFlow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StAnimFlow.h; sourceTree = "<group>"; };
 		183C30911A25D4C10041BF0C /* StFftBlueBeam.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StFftBlueBeam.cpp; sourceTree = "<group>"; };
 		183C30921A25D4C10041BF0C /* StFftBlueBeam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StFftBlueBeam.h; sourceTree = "<group>"; };
 		183FC2E31A468E1700F0CA8A /* StCvOpNoiseWrap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StCvOpNoiseWrap.cpp; sourceTree = "<group>"; };
@@ -1181,6 +1187,10 @@
 				18E82F9C1A1AE5320069F7F4 /* StFftPixelate.h */,
 				183C30911A25D4C10041BF0C /* StFftBlueBeam.cpp */,
 				183C30921A25D4C10041BF0C /* StFftBlueBeam.h */,
+				182B32EF1A66C42A0094A59D /* StAnimRipple.cpp */,
+				182B32F01A66C42A0094A59D /* StAnimRipple.h */,
+				182B32F21A66DA8A0094A59D /* StAnimFlow.cpp */,
+				182B32F31A66DA8A0094A59D /* StAnimFlow.h */,
 			);
 			name = states;
 			sourceTree = "<group>";
@@ -2523,6 +2533,7 @@
 				C3D11D4FFE1DE2FCC7662FDB /* b2Island.cpp in Sources */,
 				5A13697438B702582D30D374 /* b2World.cpp in Sources */,
 				BF30D7A362CEBF9286D087FD /* b2WorldCallbacks.cpp in Sources */,
+				182B32F41A66DA8A0094A59D /* StAnimFlow.cpp in Sources */,
 				B427DFF6B9AB0E77D6DA6FEF /* b2ChainAndCircleContact.cpp in Sources */,
 				187A62661A0606F200DC5640 /* ofxBaseGui.cpp in Sources */,
 				3427B76B23CCCED5264323F9 /* b2ChainAndPolygonContact.cpp in Sources */,
@@ -2588,6 +2599,7 @@
 				FFD1EBFCA24DFB4E4427B4FE /* ofxUILabelButton.cpp in Sources */,
 				C30B3A2A37F8F32EE7318718 /* ofxUILabelToggle.cpp in Sources */,
 				9A83D1B3FB64456BC907667F /* ofxUIMinimalSlider.cpp in Sources */,
+				182B32F11A66C42A0094A59D /* StAnimRipple.cpp in Sources */,
 				F440B307990F8F5CE40B9111 /* ofxUIMovingGraph.cpp in Sources */,
 				187B46FC1A21A164004CDC53 /* StFftCubeStripeDuo.cpp in Sources */,
 				222C3AB10FA3158602718602 /* ofxUIMultiImageButton.cpp in Sources */,
