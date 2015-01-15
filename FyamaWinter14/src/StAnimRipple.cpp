@@ -31,7 +31,7 @@ void StAnimRipple::update(){
     
     for (int i = 0; i < ripples.size(); i++) {
         ripples[i]->update();
-        if (ripples[i]->radius > ofGetWidth() * 1.5) {
+        if (ripples[i]->radius > ofGetWidth()) {
             ripples.pop_front();
         }
     }

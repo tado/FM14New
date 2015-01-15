@@ -11,7 +11,7 @@ public:
         loc = _loc;
         zoomSpeed = _zoomSpeed;
         radius = 0;
-        col.setHsb(ofRandom(255), 255, 255, 220);
+        col.setHsb(ofRandom(255), 255, 255, 180);
     }
     
     void update(){
