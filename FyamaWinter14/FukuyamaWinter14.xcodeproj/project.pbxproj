@@ -51,6 +51,7 @@
 		183C30931A25D4C10041BF0C /* StFftBlueBeam.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 183C30911A25D4C10041BF0C /* StFftBlueBeam.cpp */; };
 		183C5C2E1A681E0400E29E38 /* StAnimZoom.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 183C5C2C1A681E0400E29E38 /* StAnimZoom.cpp */; };
 		183C5C311A68C30100E29E38 /* StAnimRibbon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 183C5C2F1A68C30100E29E38 /* StAnimRibbon.cpp */; };
+		183C5C341A69079400E29E38 /* StAnimPunch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 183C5C321A69079400E29E38 /* StAnimPunch.cpp */; };
 		183FC2E51A468E1700F0CA8A /* StCvOpNoiseWrap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 183FC2E31A468E1700F0CA8A /* StCvOpNoiseWrap.cpp */; };
 		1846E4491A16069C00241F18 /* StCvOpNote.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1846E4471A16069C00241F18 /* StCvOpNote.cpp */; };
 		1846E44C1A1606E000241F18 /* NoteParticle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1846E44A1A1606E000241F18 /* NoteParticle.cpp */; };
@@ -398,6 +399,8 @@
 		183C5C2D1A681E0400E29E38 /* StAnimZoom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StAnimZoom.h; sourceTree = "<group>"; };
 		183C5C2F1A68C30100E29E38 /* StAnimRibbon.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StAnimRibbon.cpp; sourceTree = "<group>"; };
 		183C5C301A68C30100E29E38 /* StAnimRibbon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StAnimRibbon.h; sourceTree = "<group>"; };
+		183C5C321A69079400E29E38 /* StAnimPunch.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StAnimPunch.cpp; sourceTree = "<group>"; };
+		183C5C331A69079400E29E38 /* StAnimPunch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StAnimPunch.h; sourceTree = "<group>"; };
 		183FC2E31A468E1700F0CA8A /* StCvOpNoiseWrap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StCvOpNoiseWrap.cpp; sourceTree = "<group>"; };
 		183FC2E41A468E1700F0CA8A /* StCvOpNoiseWrap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StCvOpNoiseWrap.h; sourceTree = "<group>"; };
 		1846E4471A16069C00241F18 /* StCvOpNote.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StCvOpNote.cpp; sourceTree = "<group>"; };
@@ -1201,6 +1204,8 @@
 				183C5C2D1A681E0400E29E38 /* StAnimZoom.h */,
 				183C5C2F1A68C30100E29E38 /* StAnimRibbon.cpp */,
 				183C5C301A68C30100E29E38 /* StAnimRibbon.h */,
+				183C5C321A69079400E29E38 /* StAnimPunch.cpp */,
+				183C5C331A69079400E29E38 /* StAnimPunch.h */,
 			);
 			name = states;
 			sourceTree = "<group>";
@@ -2621,6 +2626,7 @@
 				18768BF91A1B0F1100CEE77F /* StFftRibbonCool.cpp in Sources */,
 				D60E54E7FD6E19BC8636E0D2 /* ofxUIRadio.cpp in Sources */,
 				181634B81A15CE65005E39EB /* DofPass.cpp in Sources */,
+				183C5C341A69079400E29E38 /* StAnimPunch.cpp in Sources */,
 				1587708E3CAC72997E43504E /* ofxUIRangeSlider.cpp in Sources */,
 				59C5F2F5D7254C33C00F97CB /* ofxUIRectangle.cpp in Sources */,
 				FE0F1DB69ACCD163E9DA2A15 /* ofxUIRotarySlider.cpp in Sources */,

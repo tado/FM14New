@@ -1,11 +1,11 @@
-#include "StAnimRipple.h"
+#include "StAnimPunch.h"
 #include "ofApp.h"
 
-string StAnimRipple::getName(){
-    return "StAnimRipple";
+string StAnimPunch::getName(){
+    return "StAnimPunch";
 }
 
-void StAnimRipple::setup(){
+void StAnimPunch::setup(){
     gui = new ofxUICanvas();
     gui->init(212, 10, 200, 100);
     gui->addSpacer();
@@ -23,21 +23,17 @@ void StAnimRipple::setup(){
     app = ((ofApp*)ofGetAppPtr());
 }
 
-void StAnimRipple::update(){
-    if (ofGetFrameNum() % 10 == 0) {
-        Ripple *rip = new Ripple(ofVec2f(ofRandom(ofGetWidth()), ofRandom(ofGetHeight())), 20.0);
-        ripples.push_back(rip);
-    }
+void StAnimPunch::update(){
     
-    for (int i = 0; i < ripples.size(); i++) {
-        ripples[i]->update();
-        if (ripples[i]->radius > ofGetWidth()) {
-            ripples.pop_front();
+    for (int i = 0; i < punch.size(); i++) {
+        punch[i]->update();
+        if (punch[i]->radius > ofGetWidth()) {
+            punch.pop_front();
         }
     }
 }
 
-void StAnimRipple::draw(){
+void StAnimPunch::draw(){
     gui->setVisible(getSharedData().guiVisible);
     app->drawFbo->fbo.begin();
     app->drawFbo->blendMode = 1;
@@ -47,21 +43,33 @@ void StAnimRipple::draw(){
     ofEnableBlendMode(OF_BLENDMODE_ALPHA);
     
     post.begin();
-    for (int i = 0; i < ripples.size(); i++) {
-        ripples[i]->draw();
+    for (int i = 0; i < punch.size(); i++) {
+        punch[i]->draw();
     }
     post.end();
     
     app->drawFbo->fbo.end();
 }
 
-void StAnimRipple::guiEvent(ofxUIEventArgs &e){
+void StAnimPunch::guiEvent(ofxUIEventArgs &e){
     string name = e.widget->getName();
     if(name == "SAVE SETTINGS"){
         gui->saveSettings("StFftBlueBeam.xml");
     }
 }
 
-void StAnimRipple::stateExit(){
+void StAnimPunch::stateExit(){
     gui->setVisible(false);
+}
+
+void StAnimPunch::stateEnter(){
+    punch.clear();
+    for (int i = 0; i < 8; i++) {
+        //Punch *p = new Punch(ofVec2f(ofRandom(ofGetWidth()), ofRandom(ofGetHeight())), 20.0);
+        int hue = ofRandom(255);
+        Punch *pr = new Punch(ofVec2f(ofGetWidth()/6, ofGetHeight()/2), 8 * (9 - i), hue);
+        Punch *pl = new Punch(ofVec2f(ofGetWidth()/6 * 5, ofGetHeight()/2), 8 * (9 - i), hue);
+        punch.push_back(pr);
+        punch.push_back(pl);
+    }
 }
