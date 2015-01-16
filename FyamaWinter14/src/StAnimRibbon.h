@@ -22,6 +22,10 @@ public:
     BloomPass::Ptr bloom;
     
     deque<ofxTwistedRibbon *> ribbons;
-    deque<float> speed;
+    //deque<ofVec3f> ribbonPos;
+    deque<float> radius;
+    deque<float> spinSpeed;
+    deque<ofVec3f> lastPos;
+    deque<ofVec3f> speed;
     int maxRibbon;
 };

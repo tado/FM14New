@@ -20,38 +20,51 @@ void StAnimRibbon::setup(){
     bloom = post.createPass<BloomPass>();
     bloom->setEnabled(true);
     
-    cam.setFov(80);
-    maxRibbon = 100;
+    cam.setFov(100);
+    maxRibbon = 200;
     
     app = ((ofApp*)ofGetAppPtr());
 }
 
 void StAnimRibbon::update(){
-    if (ofGetFrameNum() % 3 == 0) {
+    if (ofGetFrameNum() % 1 == 0) {
         ofxTwistedRibbon *r = new ofxTwistedRibbon();
-        r->update(ofVec3f(ofRandom(-ofGetHeight(), ofGetHeight()),
-                          ofRandom(-ofGetHeight(), ofGetHeight()),
-                          ofGetWidth()/2.0));
-        r->length = 200;
+
+        ofVec3f pos = ofVec3f(
+                              ofRandom(-ofGetWidth() / 4.0, ofGetWidth() / 4.0),
+                              ofRandom(-ofGetWidth() / 4.0, ofGetWidth() / 4.0),
+                              ofGetWidth());
+        ofVec3f sp = ofVec3f(0, 0, ofRandom(10, 20));
+        speed.push_back(sp);
+        
+        float ss = ofRandom(-20, 20);
+        spinSpeed.push_back(ss);
+        
+        lastPos.push_back(pos);
+        r->update(ofVec3f(pos));
+        r->length = 100;
         r->thickness = 20;
         ofColor col;
         col.setHsb(ofRandom(255), 255, 255);
         r->color = col;
         ribbons.push_back(r);
-        float sp = ofRandom(20, 40);
-        speed.push_back(sp);
+
+        float ra = ofRandom(ofGetWidth() / 8, ofGetWidth() / 4);
+        radius.push_back(ra);
+        
+        if (ribbons.size() > maxRibbon) {
+            ribbons.pop_front();
+            lastPos.pop_front();
+            speed.pop_front();
+            spinSpeed.pop_front();
+        }
     }
     for (int i = 0; i < ribbons.size(); i++) {
-        ofVec3f loc = ribbons[i]->points[ribbons[i]->points.size() - 1];
-        ribbons[i]->update(ofVec3f(loc.x + cos(ofGetElapsedTimef()) * 40,
-                                   loc.y + sin(ofGetElapsedTimef()) * 40,
-                                   loc.z - speed[i]));
+        lastPos[i] -= speed[i];
+        ribbons[i]->update(lastPos[i]);
         ofColor col;
-        col.setHsb(int(ribbons[i]->color.getHue() + 4) % 255, 255, 255);
+        col.setHsb(int(ribbons[i]->color.getHue() + 10) % 255, 255, 255);
         ribbons[i]->color = col;
-    }
-    if (ribbons.size() > maxRibbon) {
-        ribbons.pop_front();
     }
 }
 
@@ -62,15 +75,15 @@ void StAnimRibbon::draw(){
     ofDisableAlphaBlending();
     ofClear(0,0,0);
     
-    ofEnableBlendMode(OF_BLENDMODE_ALPHA);
-    
     post.begin(cam);
     ofEnableDepthTest();
-    
+    ofEnableBlendMode(OF_BLENDMODE_ADD);
     for (int i = 0; i < ribbons.size(); i++) {
+        ofPushMatrix();
+        ofRotateZ(ofGetElapsedTimef() * spinSpeed[i]);
         ribbons[i]->draw();
+        ofPopMatrix();
     }
-    
     ofDisableDepthTest();
     post.end();
     
