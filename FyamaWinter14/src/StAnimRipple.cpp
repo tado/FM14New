@@ -24,7 +24,7 @@ void StAnimRipple::setup(){
 }
 
 void StAnimRipple::update(){
-    if (ofGetFrameNum() % 20 == 0) {
+    if (ofGetFrameNum() % 10 == 0) {
         Ripple *rip = new Ripple(ofVec2f(ofRandom(ofGetWidth()), ofRandom(ofGetHeight())), 10.0);
         ripples.push_back(rip);
     }

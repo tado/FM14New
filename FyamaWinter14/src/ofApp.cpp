@@ -43,6 +43,7 @@
 #include "StAnimRipple.h"
 #include "StAnimFlow.h"
 #include "StAnimZoom.h"
+#include "StAnimRibbon.h"
 
 //--------------------------------------------------------------
 void ofApp::setup(){
@@ -104,6 +105,7 @@ void ofApp::setup(){
     stateMachine.addState<StAnimRipple>();
     stateMachine.addState<StAnimFlow>();
     stateMachine.addState<StAnimZoom>();
+    stateMachine.addState<StAnimRibbon>();
     
     stateMachine.changeState("StBlank");
     guiVisible = false;
