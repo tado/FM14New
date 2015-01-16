@@ -1,11 +1,11 @@
-#include "StAnimFlow.h"
+#include "StAnimZoom.h"
 #include "ofApp.h"
 
-string StAnimFlow::getName(){
-    return "StAnimFlow";
+string StAnimZoom::getName(){
+    return "StAnimZoom";
 }
 
-void StAnimFlow::setup(){
+void StAnimZoom::setup(){
     gui = new ofxUICanvas();
     gui->init(212, 10, 200, 180);
     gui->addSpacer();
@@ -20,14 +20,16 @@ void StAnimFlow::setup(){
     bloom = post.createPass<BloomPass>();
     bloom->setEnabled(true);
     
+    cam.setFov(80);
+    
     app = ((ofApp*)ofGetAppPtr());
 }
 
-void StAnimFlow::update(){
-    if (ofGetFrameNum() % 5 == 0) {
-        FlowObject *flow = new FlowObject(ofVec3f(-ofGetWidth() / 2.0,
-                                                  ofRandom(ofGetHeight()),
-                                                  ofRandom(ofGetHeight() / 2.0)));
+void StAnimZoom::update(){
+    if (ofGetFrameNum() % 1 == 0) {
+        ZoomObject *flow = new ZoomObject(ofVec3f(ofRandom(-ofGetHeight() / 4.0, ofGetHeight() / 4.0),
+                                                  ofRandom(-ofGetHeight() / 4.0, ofGetHeight() / 4.0),
+                                                  -ofGetWidth() * 4));
         flows.push_back(flow);
     }
     
@@ -39,7 +41,7 @@ void StAnimFlow::update(){
     }
 }
 
-void StAnimFlow::draw(){
+void StAnimZoom::draw(){
     gui->setVisible(getSharedData().guiVisible);
     app->drawFbo->fbo.begin();
     app->drawFbo->blendMode = 1;
@@ -48,7 +50,7 @@ void StAnimFlow::draw(){
     
     ofEnableBlendMode(OF_BLENDMODE_ALPHA);
     
-    post.begin();
+    post.begin(cam);
     ofEnableDepthTest();
     for (int i = 0; i < flows.size(); i++) {
         flows[i]->draw();
@@ -59,13 +61,13 @@ void StAnimFlow::draw(){
     app->drawFbo->fbo.end();
 }
 
-void StAnimFlow::guiEvent(ofxUIEventArgs &e){
+void StAnimZoom::guiEvent(ofxUIEventArgs &e){
     string name = e.widget->getName();
     if(name == "SAVE SETTINGS"){
         gui->saveSettings("StFftBlueBeam.xml");
     }
 }
 
-void StAnimFlow::stateExit(){
+void StAnimZoom::stateExit(){
     gui->setVisible(false);
 }

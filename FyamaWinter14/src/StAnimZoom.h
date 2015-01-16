@@ -5,35 +5,36 @@
 #include "ofApp.h"
 #include "ofxPostProcessing.h"
 
-class FlowObject {
+class ZoomObject {
 public:
-    FlowObject(ofVec2f _loc){
+    ZoomObject(ofVec2f _loc){
         loc = _loc;
-        speed = ofVec3f(ofRandom(6, 12), 0, 0);
+        speed = ofVec3f(0, 0, ofRandom(5, 10));
         radius = 0;
         col.setHsb(ofRandom(255), 255, 255, 220);
         circleRes = int(ofRandom(3, 8));
-        radius = powf(ofRandom(6, 20), 2.0);
-        rotSpeed = ofVec3f(ofRandom(-20, 20),
-                           ofRandom(-20, 20),
-                           ofRandom(-20, 20)
-                           );
-        flowMax = 400;
+        radius = ofRandom(20, 100);
+        rotSpeed = ofVec3f(ofRandom(-1, 1),
+                           ofRandom(-1, 1),
+                           ofRandom(-1, 1)
+                           ) * 100;
+        flowMax = 1000;
     }
     
     void update(){
-        loc += speed;
+        loc.z += speed.z;
     }
     
     void draw(){
         ofSetCircleResolution(circleRes);
         ofSetColor(col);
         ofPushMatrix();
-        ofTranslate(loc.x, loc.y, loc.z);
+        //ofRotateZ(ofGetElapsedTimef() * -20);
+        ofTranslate(loc);
         ofRotateX(-ofGetElapsedTimef() * rotSpeed.x);
         ofRotateY(-ofGetElapsedTimef() * rotSpeed.y);
         ofRotateZ(-ofGetElapsedTimef() * rotSpeed.z);
-        ofCircle(0, 0, radius);
+        ofCircle(0,0, radius);
         ofPopMatrix();
     }
     
@@ -47,7 +48,7 @@ public:
 };
 
 
-class StAnimFlow : public itg::ofxState<SharedData>{
+class StAnimZoom : public itg::ofxState<SharedData>{
 public:
     string getName();
     void setup();
@@ -62,5 +63,5 @@ public:
     ofxPostProcessing post;
     BloomPass::Ptr bloom;
     
-    deque<FlowObject *> flows;
+    deque<ZoomObject *> flows;
 };

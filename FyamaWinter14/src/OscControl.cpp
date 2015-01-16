@@ -7,7 +7,7 @@ string stateMatrix[5][8] = {
     {"StFftDrawCircleBlue", "StFftCubeStripe", "StFftCubeStripeDuo", "StFftCubeDistort", "StFftBlueBeam", "StFftDrawBar", "StFftBox", "StFftDrawCircle"},
     {"StRgbDelay", "StKaleidoscopeSimple", "StCvOpNoiseWrap", "StCvOpParticlePath", "StCvOpSparkle", "StCvOpParticle", "StCvOpMesh", "StCvOpDistort"},
     {"StFftDrawRect","StCvOpParticlePath", "StFftPixelate", "StCvOpParticleGJ", "StFftBlueBeam", "StFftDrawBar", "StCvOpMeshColor"},
-    {"StAnimRipple", "StAnimFlow", "", "", "", "", "StBlank"}
+    {"StAnimRipple", "StAnimFlow", "StAnimZoom", "", "", "", "StBlank"}
 };
 
 void OscControl::setup(){

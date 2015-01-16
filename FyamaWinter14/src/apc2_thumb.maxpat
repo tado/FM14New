@@ -9,7 +9,7 @@
 			"modernui" : 1
 		}
 ,
-		"rect" : [ 463.0, 45.0, 930.0, 1016.0 ],
+		"rect" : [ 453.0, 45.0, 930.0, 1031.0 ],
 		"bgcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 		"editing_bgcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ],
 		"bglocked" : 0,
@@ -39,6 +39,57 @@
 		"style" : "",
 		"subpatcher_template" : "",
 		"boxes" : [ 			{
+				"box" : 				{
+					"autofit" : 1,
+					"forceaspect" : 1,
+					"id" : "obj-39",
+					"ignoreclick" : 1,
+					"maxclass" : "fpic",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "jit_matrix" ],
+					"patching_rect" : [ 643.0, 565.0, 100.0, 100.0 ],
+					"pic" : "Macintosh HD:/Users/tado/Documents/of_v0.8.4_osx_release/apps/FM14New/FyamaWinter14/bin/data/sticon/st35.jpg",
+					"presentation" : 1,
+					"presentation_rect" : [ 270.0, 540.0, 105.0, 105.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"autofit" : 1,
+					"forceaspect" : 1,
+					"id" : "obj-36",
+					"ignoreclick" : 1,
+					"maxclass" : "fpic",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "jit_matrix" ],
+					"patching_rect" : [ 628.0, 550.0, 100.0, 100.0 ],
+					"pic" : "Macintosh HD:/Users/tado/Documents/of_v0.8.4_osx_release/apps/FM14New/FyamaWinter14/bin/data/sticon/st34.jpg",
+					"presentation" : 1,
+					"presentation_rect" : [ 165.0, 540.0, 105.0, 105.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"autofit" : 1,
+					"forceaspect" : 1,
+					"id" : "obj-32",
+					"ignoreclick" : 1,
+					"maxclass" : "fpic",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "jit_matrix" ],
+					"patching_rect" : [ 613.0, 535.0, 100.0, 100.0 ],
+					"pic" : "Macintosh HD:/Users/tado/Documents/of_v0.8.4_osx_release/apps/FM14New/FyamaWinter14/bin/data/sticon/st33.jpg",
+					"presentation" : 1,
+					"presentation_rect" : [ 60.0, 540.0, 105.0, 105.0 ]
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"autofit" : 1,
 					"forceaspect" : 1,
@@ -2229,6 +2280,27 @@
 				"name" : "st32.jpg",
 				"bootpath" : "~/Documents/of_v0.8.4_osx_release/apps/Fukuyama14/FyamaWinter14/bin/data/sticon",
 				"patcherrelativepath" : "../../../Fukuyama14/FyamaWinter14/bin/data/sticon",
+				"type" : "JPEG",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "st33.jpg",
+				"bootpath" : "~/Documents/of_v0.8.4_osx_release/apps/FM14New/FyamaWinter14/bin/data/sticon",
+				"patcherrelativepath" : "../bin/data/sticon",
+				"type" : "JPEG",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "st34.jpg",
+				"bootpath" : "~/Documents/of_v0.8.4_osx_release/apps/FM14New/FyamaWinter14/bin/data/sticon",
+				"patcherrelativepath" : "../bin/data/sticon",
+				"type" : "JPEG",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "st35.jpg",
+				"bootpath" : "~/Documents/of_v0.8.4_osx_release/apps/FM14New/FyamaWinter14/bin/data/sticon",
+				"patcherrelativepath" : "../bin/data/sticon",
 				"type" : "JPEG",
 				"implicit" : 1
 			}

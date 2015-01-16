@@ -42,6 +42,7 @@
 #include "StFftBlueBeam.h"
 #include "StAnimRipple.h"
 #include "StAnimFlow.h"
+#include "StAnimZoom.h"
 
 //--------------------------------------------------------------
 void ofApp::setup(){
@@ -102,6 +103,7 @@ void ofApp::setup(){
     stateMachine.addState<StFftBlueBeam>();
     stateMachine.addState<StAnimRipple>();
     stateMachine.addState<StAnimFlow>();
+    stateMachine.addState<StAnimZoom>();
     
     stateMachine.changeState("StBlank");
     guiVisible = false;
