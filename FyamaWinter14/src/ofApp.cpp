@@ -45,6 +45,7 @@
 #include "StAnimZoom.h"
 #include "StAnimRibbon.h"
 #include "StAnimPunch.h"
+#include "StAnimFade.h"
 
 //--------------------------------------------------------------
 void ofApp::setup(){
@@ -108,6 +109,7 @@ void ofApp::setup(){
     stateMachine.addState<StAnimZoom>();
     stateMachine.addState<StAnimRibbon>();
     stateMachine.addState<StAnimPunch>();
+    stateMachine.addState<StAnimFade>();
     
     stateMachine.changeState("StBlank");
     guiVisible = false;

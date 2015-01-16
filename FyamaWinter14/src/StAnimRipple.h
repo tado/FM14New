@@ -45,6 +45,7 @@ public:
     ofEasyCam cam;
     ofxPostProcessing post;
     BloomPass::Ptr bloom;
+    ofColor baseColor;
     
     deque<Ripple *> ripples;
 };

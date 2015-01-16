@@ -20,6 +20,8 @@ void StAnimRipple::setup(){
     bloom = post.createPass<BloomPass>();
     bloom->setEnabled(true);
     
+    baseColor.setHsb(ofRandom(255), 255, 180);
+    
     app = ((ofApp*)ofGetAppPtr());
 }
 
@@ -47,6 +49,10 @@ void StAnimRipple::draw(){
     ofEnableBlendMode(OF_BLENDMODE_ALPHA);
     
     post.begin();
+    
+    ofSetColor(baseColor);
+    ofRect(0, 0, ofGetWidth(), ofGetHeight());
+    
     for (int i = 0; i < ripples.size(); i++) {
         ripples[i]->draw();
     }

@@ -11,8 +11,8 @@ public:
         loc = _loc;
         zoomSpeed = _zoomSpeed;
         radius = 0;
-        col.setHsb(_hue, 255, 255, 100);
-        alpha = 255;
+        col.setHsb(_hue, 255, 255, 255);
+        alpha = 180;
     }
     
     void update(){
