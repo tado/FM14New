@@ -33,17 +33,17 @@ void StAnimRibbon::update(){
         ofVec3f pos = ofVec3f(
                               ofRandom(-ofGetWidth() / 4.0, ofGetWidth() / 4.0),
                               ofRandom(-ofGetWidth() / 4.0, ofGetWidth() / 4.0),
-                              ofGetWidth());
+                              ofGetWidth() / 4.0);
         ofVec3f sp = ofVec3f(0, 0, ofRandom(10, 20));
         speed.push_back(sp);
         
-        float ss = ofRandom(-20, 20);
+        float ss = ofRandom(-5, 5);
         spinSpeed.push_back(ss);
         
         lastPos.push_back(pos);
         r->update(ofVec3f(pos));
         r->length = 100;
-        r->thickness = 20;
+        r->thickness = 10;
         ofColor col;
         col.setHsb(ofRandom(255), 255, 255);
         r->color = col;
@@ -63,7 +63,7 @@ void StAnimRibbon::update(){
         lastPos[i] -= speed[i];
         ribbons[i]->update(lastPos[i]);
         ofColor col;
-        col.setHsb(int(ribbons[i]->color.getHue() + 10) % 255, 255, 255);
+        col.setHsb(int(ribbons[i]->color.getHue() + 4) % 255, 255, 255);
         ribbons[i]->color = col;
     }
 }

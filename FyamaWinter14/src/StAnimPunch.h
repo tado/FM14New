@@ -12,7 +12,7 @@ public:
         zoomSpeed = _zoomSpeed;
         radius = 0;
         col.setHsb(_hue, 255, 255, 255);
-        alpha = 180;
+        alpha = 200;
     }
     
     void update(){
@@ -24,7 +24,7 @@ public:
         col.setHsb(col.getHue(), col.getSaturation(), col.getBrightness(), alpha);
         ofSetColor(col);
         ofCircle(loc, radius);
-        alpha -= 2;
+        alpha -= 1;
         if (alpha < 0) {
             alpha = 0;
         }

@@ -13,7 +13,7 @@ public:
         radius = 0;
         col.setHsb(ofRandom(255), 255, 255, 220);
         circleRes = int(ofRandom(3, 8));
-        radius = powf(ofRandom(6, 20), 2.0);
+        radius = powf(ofRandom(4, 20), 2.0);
         rotSpeed = ofVec3f(ofRandom(-20, 20),
                            ofRandom(-20, 20),
                            ofRandom(-20, 20)

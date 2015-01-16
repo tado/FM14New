@@ -20,6 +20,13 @@ void StAnimFlow::setup(){
     bloom = post.createPass<BloomPass>();
     bloom->setEnabled(true);
     
+    for (int i = 0; i < 50; i++) {
+        FlowObject *flow = new FlowObject(ofVec3f(ofRandom(ofGetWidth()),
+                                                  ofRandom(ofGetHeight()),
+                                                  ofRandom(ofGetHeight() / 2.0)));
+        flows.push_back(flow);
+    }
+    
     app = ((ofApp*)ofGetAppPtr());
 }
 
