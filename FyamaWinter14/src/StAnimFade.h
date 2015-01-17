@@ -12,7 +12,7 @@ public:
         loc = ofVec2f(ofRandom(ofGetWidth()), 0);
         speed = _speed;
         rectWidth = ofRandom(ofGetWidth()/4, ofGetWidth()/2);
-        alpha = 127;
+        alpha = 200;
         col.setHsb(ofRandom(255), 255, 180, alpha);
     }
     

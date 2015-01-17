@@ -16,9 +16,11 @@ void StAnimFlow::setup(){
     gui->autoSizeToFitWidgets();
     gui->setVisible(false);
     
+    /*
     post.init(ofGetWidth(), ofGetHeight());
     bloom = post.createPass<BloomPass>();
     bloom->setEnabled(true);
+     */
     
     for (int i = 0; i < 50; i++) {
         FlowObject *flow = new FlowObject(ofVec3f(ofRandom(ofGetWidth()),
@@ -55,13 +57,13 @@ void StAnimFlow::draw(){
     
     ofEnableBlendMode(OF_BLENDMODE_ALPHA);
     
-    post.begin();
+    // post.begin();
     ofEnableDepthTest();
     for (int i = 0; i < flows.size(); i++) {
         flows[i]->draw();
     }
     ofDisableDepthTest();
-    post.end();
+    /// post.end();
     
     app->drawFbo->fbo.end();
 }

@@ -16,9 +16,11 @@ void StAnimPunch::setup(){
     gui->autoSizeToFitWidgets();
     gui->setVisible(false);
     
+    /*
     post.init(ofGetWidth(), ofGetHeight());
     bloom = post.createPass<BloomPass>();
     bloom->setEnabled(true);
+     */
     
     app = ((ofApp*)ofGetAppPtr());
 }
@@ -42,12 +44,12 @@ void StAnimPunch::draw(){
     
     ofEnableBlendMode(OF_BLENDMODE_ALPHA);
     
-    post.begin();
+    // post.begin();
     for (int i = 0; i < punch.size(); i++) {
         punch[i]->draw();
     }
-    post.end();
-    
+    // post.end();
+
     app->drawFbo->fbo.end();
 }
 

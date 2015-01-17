@@ -16,9 +16,11 @@ void StAnimZoom::setup(){
     gui->autoSizeToFitWidgets();
     gui->setVisible(false);
     
+    /*
     post.init(ofGetWidth(), ofGetHeight());
     bloom = post.createPass<BloomPass>();
     bloom->setEnabled(true);
+     */
     
     cam.setFov(80);
     
@@ -50,13 +52,15 @@ void StAnimZoom::draw(){
     
     ofEnableBlendMode(OF_BLENDMODE_ALPHA);
     
-    post.begin(cam);
+    // post.begin(cam);
+    cam.begin();
     ofEnableDepthTest();
     for (int i = 0; i < flows.size(); i++) {
         flows[i]->draw();
     }
     ofDisableDepthTest();
-    post.end();
+    //post.end();
+    cam.end();
     
     app->drawFbo->fbo.end();
 }

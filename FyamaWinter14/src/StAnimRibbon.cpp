@@ -16,9 +16,11 @@ void StAnimRibbon::setup(){
     gui->autoSizeToFitWidgets();
     gui->setVisible(false);
     
+    /*
     post.init(ofGetWidth(), ofGetHeight());
     bloom = post.createPass<BloomPass>();
     bloom->setEnabled(true);
+     */
     
     cam.setFov(100);
     maxRibbon = 200;
@@ -75,7 +77,8 @@ void StAnimRibbon::draw(){
     ofDisableAlphaBlending();
     ofClear(0,0,0);
     
-    post.begin(cam);
+    // post.begin(cam);
+    cam.begin();
     ofEnableDepthTest();
     ofEnableBlendMode(OF_BLENDMODE_ADD);
     for (int i = 0; i < ribbons.size(); i++) {
@@ -85,7 +88,8 @@ void StAnimRibbon::draw(){
         ofPopMatrix();
     }
     ofDisableDepthTest();
-    post.end();
+    // post.end();
+    cam.end();
     
     app->drawFbo->fbo.end();
 }

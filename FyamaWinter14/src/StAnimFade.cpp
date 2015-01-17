@@ -16,9 +16,11 @@ void StAnimFade::setup(){
     gui->autoSizeToFitWidgets();
     gui->setVisible(false);
     
+    /*
     post.init(ofGetWidth(), ofGetHeight());
     bloom = post.createPass<BloomPass>();
     bloom->setEnabled(true);
+     */
     
     app = ((ofApp*)ofGetAppPtr());
     
@@ -29,7 +31,7 @@ void StAnimFade::setup(){
         rects.push_back(r);
     }
     
-    baseColor.setHsb(ofRandom(255), 255, 180);
+    baseColor.setHsb(ofRandom(255), 255, 255);
 }
 
 void StAnimFade::update(){
@@ -48,7 +50,7 @@ void StAnimFade::draw(){
     ofDisableAlphaBlending();
     ofClear(0, 0, 0);
     
-    post.begin();
+    // post.begin();
     //ofEnableDepthTest();
     ofEnableBlendMode(OF_BLENDMODE_ALPHA);
 
@@ -58,7 +60,7 @@ void StAnimFade::draw(){
         rects[i]->draw();
     }
     
-    post.end();
+    // post.end();
     
     app->drawFbo->fbo.end();
 }

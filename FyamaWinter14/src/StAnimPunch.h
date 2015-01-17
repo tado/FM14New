@@ -12,7 +12,7 @@ public:
         zoomSpeed = _zoomSpeed;
         radius = 0;
         col.setHsb(_hue, 255, 255, 255);
-        alpha = 200;
+        alpha = 220;
     }
     
     void update(){

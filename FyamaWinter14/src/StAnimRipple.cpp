@@ -16,11 +16,11 @@ void StAnimRipple::setup(){
     gui->autoSizeToFitWidgets();
     gui->setVisible(false);
     
-    post.init(ofGetWidth(), ofGetHeight());
-    bloom = post.createPass<BloomPass>();
-    bloom->setEnabled(true);
+    //post.init(ofGetWidth(), ofGetHeight());
+    //bloom = post.createPass<BloomPass>();
+    //bloom->setEnabled(true);
     
-    baseColor.setHsb(ofRandom(255), 255, 180);
+    baseColor.setHsb(ofRandom(255), 255, 255);
     
     app = ((ofApp*)ofGetAppPtr());
 }
@@ -48,7 +48,7 @@ void StAnimRipple::draw(){
     
     ofEnableBlendMode(OF_BLENDMODE_ALPHA);
     
-    post.begin();
+    //post.begin();
     
     ofSetColor(baseColor);
     ofRect(0, 0, ofGetWidth(), ofGetHeight());
@@ -56,7 +56,7 @@ void StAnimRipple::draw(){
     for (int i = 0; i < ripples.size(); i++) {
         ripples[i]->draw();
     }
-    post.end();
+    //post.end();
     
     app->drawFbo->fbo.end();
 }
