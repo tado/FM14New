@@ -15,6 +15,7 @@ public:
     void draw();
     void guiEvent(ofxUIEventArgs &e);
     void stateExit();
+    void stateEnter();
     
     ofPixels pixels;
     ofTexture tex;
@@ -36,7 +37,7 @@ public:
     static const int NUM = 100;
     ofImage img[4];
     
-    ofxPostProcessing post;
+    ofxPostProcessing *post;
     BloomPass::Ptr bloom;
     
     ofApp *app;

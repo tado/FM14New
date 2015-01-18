@@ -27,8 +27,6 @@ void StFftSphereStripe::setup(){
     ofAddListener(gui->newGUIEvent,this,&StFftSphereStripe::guiEvent);
     app = ((ofApp*)ofGetAppPtr());
     
-    post.init(app->drawFbo->width, app->drawFbo->height);
-    post.createPass<BloomPass>()->setEnabled(true);
     cam.setFarClip(10000);
 
     int width = 512;
@@ -83,7 +81,7 @@ void StFftSphereStripe::draw(){
     
     app->drawFbo->fbo.begin();
     app->drawFbo->blendMode = 0;
-    post.begin(cam);
+    post->begin(cam);
     ofScale(zoom, zoom);
     /*
     ofRotateX(ofGetElapsedTimef() * shiftspeed);
@@ -114,7 +112,7 @@ void StFftSphereStripe::draw(){
     mesh.draw();
     tex.unbind();
     
-    post.end();
+    post->end();
     app->drawFbo->fbo.end();
     ofDisableAlphaBlending();
 }
@@ -140,4 +138,11 @@ void StFftSphereStripe::createMesh(){
 
 void StFftSphereStripe::stateExit(){
     gui->setVisible(false);
+    delete post;
+}
+
+void StFftSphereStripe::stateEnter(){
+    post = new ofxPostProcessing();
+    post->init(app->drawFbo->width, app->drawFbo->height);
+    post->createPass<BloomPass>()->setEnabled(true);
 }

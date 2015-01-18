@@ -16,31 +16,42 @@ void StAnimZoom::setup(){
     gui->autoSizeToFitWidgets();
     gui->setVisible(false);
     
-    /*
-    post.init(ofGetWidth(), ofGetHeight());
-    bloom = post.createPass<BloomPass>();
-    bloom->setEnabled(true);
-     */
-    
     cam.setFov(80);
+    
+    for (int i = 0; i < 100; i++) {
+        ZoomObject *flow = new ZoomObject(ofVec3f(ofRandom(-ofGetHeight() / 4.0, ofGetHeight() / 4.0),
+                                                  ofRandom(-ofGetHeight() / 4.0, ofGetHeight() / 4.0),
+                                                  ofRandom(-500, 1000)));
+        flows.push_back(flow);
+    }
     
     app = ((ofApp*)ofGetAppPtr());
 }
 
 void StAnimZoom::update(){
-    if (ofGetFrameNum() % 1 == 0) {
-        ZoomObject *flow = new ZoomObject(ofVec3f(ofRandom(-ofGetHeight() / 4.0, ofGetHeight() / 4.0),
-                                                  ofRandom(-ofGetHeight() / 4.0, ofGetHeight() / 4.0),
-                                                  -ofGetWidth() * 4));
-        flows.push_back(flow);
-    }
-    
     for (int i = 0; i < flows.size(); i++) {
         flows[i]->update();
-        if (flows.size() > flows[i]->flowMax) {
-            flows.pop_front();
+        if (flows[i]->loc.z > 1000) {
+            flows[i]->loc.z = -500;
         }
     }
+    
+    /*
+     if (ofGetFrameNum() % 1 == 0) {
+     ZoomObject *flow = new ZoomObject(ofVec3f(ofRandom(-ofGetHeight() / 4.0, ofGetHeight() / 4.0),
+     ofRandom(-ofGetHeight() / 4.0, ofGetHeight() / 4.0),
+     -ofGetWidth() * 4));
+     flows.push_back(flow);
+     }
+     
+     for (int i = 0; i < flows.size(); i++) {
+     flows[i]->update();
+     if (flows.size() > flows[i]->flowMax) {
+     delete flows[0];
+     flows.pop_front();
+     }
+     }
+     */
 }
 
 void StAnimZoom::draw(){
@@ -52,15 +63,13 @@ void StAnimZoom::draw(){
     
     ofEnableBlendMode(OF_BLENDMODE_ALPHA);
     
-    // post.begin(cam);
-    cam.begin();
+    post->begin(cam);
     ofEnableDepthTest();
     for (int i = 0; i < flows.size(); i++) {
         flows[i]->draw();
     }
     ofDisableDepthTest();
-    //post.end();
-    cam.end();
+    post->end();
     
     app->drawFbo->fbo.end();
 }
@@ -74,4 +83,12 @@ void StAnimZoom::guiEvent(ofxUIEventArgs &e){
 
 void StAnimZoom::stateExit(){
     gui->setVisible(false);
+    delete post;
+}
+
+void StAnimZoom::stateEnter(){
+    post = new PostProcessing();
+    post->init(ofGetWidth(), ofGetHeight());
+    bloom = post->createPass<BloomPass>();
+    bloom->setEnabled(true);
 }

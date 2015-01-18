@@ -113,6 +113,7 @@ void Particle::throughOfWalls(){
 // 描画
 void Particle::draw(){
     ofSetColor(col);
+    ofSetCircleResolution(64);
     ofCircle(position, radius);
 }
 

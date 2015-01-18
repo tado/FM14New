@@ -26,9 +26,6 @@ void StFftBlueBeam::setup(){
     ofAddListener(gui->newGUIEvent,this,&StFftBlueBeam::guiEvent);
     app = ((ofApp*)ofGetAppPtr());
     
-    post.init(app->drawFbo->width, app->drawFbo->height);
-    post.createPass<BloomPass>()->setEnabled(true);
-    
     cam.setFarClip(20000);
     
     for (int i = 0; i < NUM; i++) {
@@ -90,7 +87,7 @@ void StFftBlueBeam::draw(){
     
     app->drawFbo->fbo.begin();
     app->drawFbo->blendMode = 1;
-    post.begin(cam);
+    post->begin(cam);
     
     ofDisableAlphaBlending();
     ofSetColor(0);
@@ -110,7 +107,7 @@ void StFftBlueBeam::draw(){
         }
         ribbons[i]->draw();
     }
-    post.end();
+    post->end();
     app->drawFbo->fbo.end();
     ofDisableAlphaBlending();
 }
@@ -128,4 +125,11 @@ void StFftBlueBeam::createMesh(){
 
 void StFftBlueBeam::stateExit(){
     gui->setVisible(false);
+    delete post;
+}
+
+void StFftBlueBeam::stateEnter(){
+    post = new ofxPostProcessing();
+    post->init(app->drawFbo->width, app->drawFbo->height);
+    post->createPass<BloomPass>()->setEnabled(true);
 }

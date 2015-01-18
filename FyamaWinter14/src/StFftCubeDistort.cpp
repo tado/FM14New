@@ -27,9 +27,6 @@ void StFftCubeDistort::setup(){
     ofAddListener(gui->newGUIEvent,this,&StFftCubeDistort::guiEvent);
     app = ((ofApp*)ofGetAppPtr());
     
-    post.init(app->drawFbo->width, app->drawFbo->height);
-    post.createPass<BloomPass>()->setEnabled(true);
-    
     cam.setFarClip(10000);
     
     int width = 512;
@@ -85,7 +82,7 @@ void StFftCubeDistort::draw(){
     
     app->drawFbo->fbo.begin();
     app->drawFbo->blendMode = 0;
-    post.begin(cam);
+    post->begin(cam);
     
     ofScale(zoom, zoom);
 
@@ -116,7 +113,7 @@ void StFftCubeDistort::draw(){
     ofPopMatrix();
     
     app->blackmagic->colorTexture.unbind();
-    post.end();
+    post->end();
     app->drawFbo->fbo.end();
     //ofDisableAlphaBlending();
 }
@@ -142,4 +139,11 @@ void StFftCubeDistort::createMesh(){
 
 void StFftCubeDistort::stateExit(){
     gui->setVisible(false);
+    delete post;
+}
+
+void StFftCubeDistort::stateEnter(){
+    post = new ofxPostProcessing();
+    post->init(app->drawFbo->width, app->drawFbo->height);
+    post->createPass<BloomPass>()->setEnabled(true);
 }

@@ -39,10 +39,6 @@ void StCvOpSparkle::setup(){
     img[2].loadImage("sparkle2.png");
     img[3].loadImage("sparkle3.png");
     
-    post.init(ofGetWidth(), ofGetHeight());
-    bloom = post.createPass<BloomPass>();
-    bloom->setEnabled(true);
-    
     app = ((ofApp*)ofGetAppPtr());
 }
 
@@ -94,7 +90,7 @@ void StCvOpSparkle::draw(){
     
     app->drawFbo->fbo.begin();
     app->drawFbo->blendMode = 1;
-    post.begin();
+    post->begin();
     ofDisableAlphaBlending();
     ofClear(0,0,0);
     ofTranslate(0, -app->drawFbo->top);
@@ -154,7 +150,7 @@ void StCvOpSparkle::draw(){
         ofDisableBlendMode();
         ofPopMatrix();
     }
-    post.end();
+    post->end();
     app->drawFbo->fbo.end();
     
     gui->setVisible(getSharedData().guiVisible);
@@ -169,4 +165,12 @@ void StCvOpSparkle::guiEvent(ofxUIEventArgs &e){
 
 void StCvOpSparkle::stateExit(){
     gui->setVisible(false);
+    delete post;
+}
+
+void StCvOpSparkle::stateEnter(){
+    post = new ofxPostProcessing();
+    post->init(ofGetWidth(), ofGetHeight());
+    bloom = post->createPass<BloomPass>();
+    bloom->setEnabled(true);
 }

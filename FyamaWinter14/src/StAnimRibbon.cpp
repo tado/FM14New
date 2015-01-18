@@ -16,14 +16,8 @@ void StAnimRibbon::setup(){
     gui->autoSizeToFitWidgets();
     gui->setVisible(false);
     
-    /*
-    post.init(ofGetWidth(), ofGetHeight());
-    bloom = post.createPass<BloomPass>();
-    bloom->setEnabled(true);
-     */
-    
     cam.setFov(100);
-    maxRibbon = 200;
+    maxRibbon = 100;
     
     app = ((ofApp*)ofGetAppPtr());
 }
@@ -55,12 +49,14 @@ void StAnimRibbon::update(){
         radius.push_back(ra);
         
         if (ribbons.size() > maxRibbon) {
+            delete ribbons[0];
             ribbons.pop_front();
             lastPos.pop_front();
             speed.pop_front();
             spinSpeed.pop_front();
         }
     }
+
     for (int i = 0; i < ribbons.size(); i++) {
         lastPos[i] -= speed[i];
         ribbons[i]->update(lastPos[i]);
@@ -77,8 +73,7 @@ void StAnimRibbon::draw(){
     ofDisableAlphaBlending();
     ofClear(0,0,0);
     
-    // post.begin(cam);
-    cam.begin();
+    post->begin(cam);
     ofEnableDepthTest();
     ofEnableBlendMode(OF_BLENDMODE_ADD);
     for (int i = 0; i < ribbons.size(); i++) {
@@ -88,8 +83,7 @@ void StAnimRibbon::draw(){
         ofPopMatrix();
     }
     ofDisableDepthTest();
-    // post.end();
-    cam.end();
+    post->end();
     
     app->drawFbo->fbo.end();
 }
@@ -103,4 +97,12 @@ void StAnimRibbon::guiEvent(ofxUIEventArgs &e){
 
 void StAnimRibbon::stateExit(){
     gui->setVisible(false);
+    delete post;
+}
+
+void StAnimRibbon::stateEnter(){
+    post = new PostProcessing();
+    post->init(ofGetWidth(), ofGetHeight());
+    bloom = post->createPass<BloomPass>();
+    bloom->setEnabled(true);
 }

@@ -25,8 +25,8 @@ void StFftDrawRect::setup(){
     ofAddListener(gui->newGUIEvent,this,&StFftDrawRect::guiEvent);
     
     /*
-    post.init(ofGetWidth(), ofGetHeight());
-    bloom = post.createPass<BloomPass>();
+    post->init(ofGetWidth(), ofGetHeight());
+    bloom = post->createPass<BloomPass>();
     bloom->setEnabled(true);
      */
 
@@ -49,7 +49,7 @@ void StFftDrawRect::draw() {
     
     app->drawFbo->fbo.begin();
     app->drawFbo->blendMode = 1;
-    //post.begin();
+    //post->begin();
     //cam.begin();
     ofSetRectMode(OF_RECTMODE_CORNER);
     ofEnableBlendMode(OF_BLENDMODE_ALPHA);
@@ -93,7 +93,7 @@ void StFftDrawRect::draw() {
     }
     ofPopMatrix();
     ofDisableBlendMode();
-    //post.end();
+    //post->end();
     app->drawFbo->fbo.end();
 }
 
@@ -106,4 +106,13 @@ void StFftDrawRect::guiEvent(ofxUIEventArgs &e){
 
 void StFftDrawRect::stateExit(){
     gui->setVisible(false);
+    // delete post;
+}
+
+void StFftDrawRect::stateEnter(){
+    /*
+    post = new ofxPostProcessing();
+    post->init(app->drawFbo->width, app->drawFbo->height);
+    post->createPass<BloomPass>()->setEnabled(true);
+    */
 }

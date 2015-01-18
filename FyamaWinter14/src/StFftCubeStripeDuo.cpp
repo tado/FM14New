@@ -27,8 +27,6 @@ void StFftCubeStripeDuo::setup(){
     ofAddListener(gui->newGUIEvent,this,&StFftCubeStripeDuo::guiEvent);
     app = ((ofApp*)ofGetAppPtr());
     
-    post.init(app->drawFbo->width, app->drawFbo->height);
-    post.createPass<BloomPass>()->setEnabled(true);
     cam.setFarClip(10000);
     
     int width = 128;
@@ -84,7 +82,7 @@ void StFftCubeStripeDuo::draw(){
     
     app->drawFbo->fbo.begin();
     app->drawFbo->blendMode = 0;
-    post.begin(cam);
+    post->begin(cam);
 
     ofScale(zoom, zoom);
     ofDisableAlphaBlending();
@@ -114,7 +112,7 @@ void StFftCubeStripeDuo::draw(){
     
     tex.unbind();
 
-    post.end();
+    post->end();
     app->drawFbo->fbo.end();
     ofDisableAlphaBlending();
 }
@@ -140,4 +138,11 @@ void StFftCubeStripeDuo::createMesh(){
 
 void StFftCubeStripeDuo::stateExit(){
     gui->setVisible(false);
+    delete post;
+}
+
+void StFftCubeStripeDuo::stateEnter(){
+    post = new ofxPostProcessing();
+    post->init(app->drawFbo->width, app->drawFbo->height);
+    post->createPass<BloomPass>()->setEnabled(true);
 }

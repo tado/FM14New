@@ -13,6 +13,7 @@ public:
     void update();
     void draw();
     void stateExit();
+    void stateEnter();
     void createMesh();
     void guiEvent(ofxUIEventArgs &e);
     
@@ -23,6 +24,6 @@ public:
     vector<ofxTwistedRibbon *> ribbons;
     vector<ofVec3f> position;
     vector<ofVec3f> velocity;
-    ofxPostProcessing post;
+    ofxPostProcessing *post;
     static const int NUM = 128;
 };

@@ -31,10 +31,6 @@ void StCvOpDistort::setup(){
     gui->setVisible(false);
     ofAddListener(gui->newGUIEvent,this,&StCvOpDistort::guiEvent);
     
-    post.init(ofGetWidth(), ofGetHeight());
-    bloom = post.createPass<BloomPass>();
-    bloom->setEnabled(true);
-    
     app = ((ofApp*)ofGetAppPtr());
     createMesh();
 }
@@ -97,7 +93,7 @@ void StCvOpDistort::draw(){
     
     app->drawFbo->fbo.begin();
     app->drawFbo->blendMode = 0;
-    post.begin();
+    post->begin();
     ofDisableAlphaBlending();
     ofClear(0,0,0);
     ofVec2f scale = ofVec2f(ofGetWidth() / float(app->blackmagic->colorTexture.getWidth()),
@@ -123,7 +119,7 @@ void StCvOpDistort::draw(){
      */
     
     ofPopMatrix();
-    post.end();
+    post->end();
     app->drawFbo->fbo.end();
     ofDisableAlphaBlending();
 }
@@ -165,4 +161,12 @@ void StCvOpDistort::createMesh(){
 
 void StCvOpDistort::stateExit(){
     gui->setVisible(false);
+    delete post;
+}
+
+void StCvOpDistort::stateEnter(){
+    post = new ofxPostProcessing();
+    post->init(ofGetWidth(), ofGetHeight());
+    bloom = post->createPass<BloomPass>();
+    bloom->setEnabled(true);
 }

@@ -30,6 +30,7 @@ void StRgbDelay::update(){
     t.loadData(pix);
     texBuffer.push_back(t);
     while (texBuffer.size() > delay * 3) {
+        texBuffer[0].clear();
         texBuffer.pop_front();
     }
 }

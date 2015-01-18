@@ -34,16 +34,6 @@ void StCvOpParticleGJ::setup(){
     gui->setVisible(false);
     ofAddListener(gui->newGUIEvent,this,&StCvOpParticleGJ::guiEvent);
     
-    post.init(ofGetWidth(), ofGetHeight());
-    
-    zoomblur = post.createPass<ZoomBlurPass>();
-    zoomblur->setDensity(0.1);
-    zoomblur->setEnabled(true);
-    
-    bloom = post.createPass<BloomPass>();
-    bloom->setEnabled(true);
-
-    
     app = ((ofApp*)ofGetAppPtr());
 }
 
@@ -95,7 +85,7 @@ void StCvOpParticleGJ::draw(){
     
     app->drawFbo->fbo.begin();
     app->drawFbo->blendMode = 1;
-    post.begin();
+    post->begin();
     ofDisableAlphaBlending();
     ofClear(0,0,0);
     ofTranslate(0, -app->drawFbo->top);
@@ -147,7 +137,7 @@ void StCvOpParticleGJ::draw(){
         ofDisableBlendMode();
         ofPopMatrix();
     }
-    post.end();
+    post->end();
     app->drawFbo->fbo.end();
     
     gui->setVisible(getSharedData().guiVisible);
@@ -162,4 +152,17 @@ void StCvOpParticleGJ::guiEvent(ofxUIEventArgs &e){
 
 void StCvOpParticleGJ::stateExit(){
     gui->setVisible(false);
+    delete post;
+}
+
+void StCvOpParticleGJ::stateEnter(){
+    post = new ofxPostProcessing();
+    post->init(ofGetWidth(), ofGetHeight());
+    
+    zoomblur = post->createPass<ZoomBlurPass>();
+    zoomblur->setDensity(0.1);
+    zoomblur->setEnabled(true);
+    
+    bloom = post->createPass<BloomPass>();
+    bloom->setEnabled(true);
 }

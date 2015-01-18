@@ -39,10 +39,6 @@ void StCvOpNote::setup(){
     img[2].loadImage("note2.png");
     img[3].loadImage("note3.png");
     
-    post.init(ofGetWidth(), ofGetHeight());
-    bloom = post.createPass<BloomPass>();
-    bloom->setEnabled(true);
-    
     app = ((ofApp*)ofGetAppPtr());
 }
 
@@ -94,7 +90,7 @@ void StCvOpNote::draw(){
     
     app->drawFbo->fbo.begin();
     app->drawFbo->blendMode = 1;
-    post.begin();
+    post->begin();
     ofDisableAlphaBlending();
     ofClear(0,0,0);
     ofTranslate(0, -app->drawFbo->top);
@@ -148,7 +144,7 @@ void StCvOpNote::draw(){
         ofDisableBlendMode();
         ofPopMatrix();
     }
-    post.end();
+    post->end();
     app->drawFbo->fbo.end();
     
     gui->setVisible(getSharedData().guiVisible);
@@ -163,4 +159,12 @@ void StCvOpNote::guiEvent(ofxUIEventArgs &e){
 
 void StCvOpNote::stateExit(){
     gui->setVisible(false);
+    delete post;
+}
+
+void StCvOpNote::stateEnter(){
+    post = new ofxPostProcessing();
+    post->init(ofGetWidth(), ofGetHeight());
+    bloom = post->createPass<BloomPass>();
+    bloom->setEnabled(true);
 }

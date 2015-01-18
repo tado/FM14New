@@ -18,11 +18,15 @@ public:
                            ofRandom(-20, 20),
                            ofRandom(-20, 20)
                            );
-        flowMax = 400;
+        flowMax = 150;
     }
     
-    void update(){
-        loc += speed;
+    void update(bool direction){
+        if (direction) {
+            loc += speed;
+        } else {
+            loc -= speed;
+        }
     }
     
     void draw(){
@@ -54,12 +58,14 @@ public:
     void update();
     void draw();
     void stateExit();
+    void stateEnter();
     void guiEvent(ofxUIEventArgs &e);
     
+    bool direction;
     ofxUICanvas *gui;
     ofApp *app;
     ofEasyCam cam;
-    ofxPostProcessing post;
+    ofxPostProcessing *post;
     BloomPass::Ptr bloom;
     
     deque<FlowObject *> flows;

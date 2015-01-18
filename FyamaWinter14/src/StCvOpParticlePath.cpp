@@ -34,10 +34,6 @@ void StCvOpParticlePath::setup(){
     gui->setVisible(false);
     ofAddListener(gui->newGUIEvent,this,&StCvOpParticlePath::guiEvent);
     
-    post.init(ofGetWidth(), ofGetHeight());
-    bloom = post.createPass<BloomPass>();
-    bloom->setEnabled(true);
-    
     app = ((ofApp*)ofGetAppPtr());
 }
 
@@ -89,7 +85,7 @@ void StCvOpParticlePath::draw(){
     
     app->drawFbo->fbo.begin();
     app->drawFbo->blendMode = 1;
-    post.begin();
+    post->begin();
     ofDisableAlphaBlending();
     ofClear(0,0,0);
     ofTranslate(0, -app->drawFbo->top);
@@ -162,7 +158,7 @@ void StCvOpParticlePath::draw(){
         
         ofPopMatrix();
     }
-    post.end();
+    post->end();
     app->drawFbo->fbo.end();
     
     gui->setVisible(getSharedData().guiVisible);
@@ -177,4 +173,12 @@ void StCvOpParticlePath::guiEvent(ofxUIEventArgs &e){
 
 void StCvOpParticlePath::stateExit(){
     gui->setVisible(false);
+    delete post;
+}
+
+void StCvOpParticlePath::stateEnter(){
+    post = new ofxPostProcessing();
+    post->init(ofGetWidth(), ofGetHeight());
+    bloom = post->createPass<BloomPass>();
+    bloom->setEnabled(true);
 }

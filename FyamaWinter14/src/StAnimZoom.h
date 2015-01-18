@@ -18,7 +18,7 @@ public:
                            ofRandom(-1, 1),
                            ofRandom(-1, 1)
                            ) * 100;
-        flowMax = 1000;
+        flowMax = 100;
     }
     
     void update(){
@@ -55,12 +55,13 @@ public:
     void update();
     void draw();
     void stateExit();
+    void stateEnter();
     void guiEvent(ofxUIEventArgs &e);
     
     ofxUICanvas *gui;
     ofApp *app;
     ofEasyCam cam;
-    ofxPostProcessing post;
+    ofxPostProcessing *post;
     BloomPass::Ptr bloom;
     
     deque<ZoomObject *> flows;

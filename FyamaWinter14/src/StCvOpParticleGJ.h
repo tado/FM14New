@@ -15,6 +15,7 @@ public:
     void draw();
     void guiEvent(ofxUIEventArgs &e);
     void stateExit();
+    void stateEnter();
     
     ofPixels pixels;
     ofTexture tex;
@@ -35,7 +36,7 @@ public:
     deque<Particle *> particles;
     static const int NUM = 50;
     
-    ofxPostProcessing post;
+    ofxPostProcessing *post;
     BloomPass::Ptr bloom;
     ZoomBlurPass::Ptr zoomblur;
     

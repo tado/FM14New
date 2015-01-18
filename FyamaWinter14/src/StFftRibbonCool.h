@@ -28,5 +28,5 @@ public:
     vector<ofVec3f> interplateVertex;
     vector<ofVec3f> randomVec;
     vector<ofxTwistedRibbon *> ribbons;
-    ofxPostProcessing post;
+    ofxPostProcessing *post;
 };

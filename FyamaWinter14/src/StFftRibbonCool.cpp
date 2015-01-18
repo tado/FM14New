@@ -28,9 +28,6 @@ void StFftRibbonCool::setup(){
     ofAddListener(gui->newGUIEvent,this,&StFftRibbonCool::guiEvent);
     app = ((ofApp*)ofGetAppPtr());
     
-    post.init(app->drawFbo->width, app->drawFbo->height);
-    post.createPass<BloomPass>()->setEnabled(true);
-    
     createMesh();
 }
 
@@ -73,7 +70,7 @@ void StFftRibbonCool::draw(){
     
     app->drawFbo->fbo.begin();
     app->drawFbo->blendMode = 0;
-    post.begin(cam);
+    post->begin(cam);
     ofScale(zoom, zoom);
     ofRotateX(ofGetElapsedTimef() * shiftspeed);
     ofRotateY(ofGetElapsedTimef() * shiftspeed * 1.1);
@@ -95,7 +92,7 @@ void StFftRibbonCool::draw(){
     
     ofDisableDepthTest();
     glDisable(GL_CULL_FACE);
-    post.end();
+    post->end();
     app->drawFbo->fbo.end();
     ofDisableAlphaBlending();
 }
@@ -127,6 +124,9 @@ void StFftRibbonCool::createMesh(){
 
 void StFftRibbonCool::stateEnter(){
     createMesh();
+    post = new ofxPostProcessing();
+    post->init(app->drawFbo->width, app->drawFbo->height);
+    post->createPass<BloomPass>()->setEnabled(true);
 }
 
 void StFftRibbonCool::stateExit(){
@@ -134,4 +134,5 @@ void StFftRibbonCool::stateExit(){
     currentVertex.clear();
     interplateVertex.clear();
     gui->setVisible(false);
+    delete post;
 }

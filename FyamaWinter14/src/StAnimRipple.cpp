@@ -16,10 +16,6 @@ void StAnimRipple::setup(){
     gui->autoSizeToFitWidgets();
     gui->setVisible(false);
     
-    //post.init(ofGetWidth(), ofGetHeight());
-    //bloom = post.createPass<BloomPass>();
-    //bloom->setEnabled(true);
-    
     baseColor.setHsb(ofRandom(255), 255, 255);
     
     app = ((ofApp*)ofGetAppPtr());
@@ -34,6 +30,7 @@ void StAnimRipple::update(){
     for (int i = 0; i < ripples.size(); i++) {
         ripples[i]->update();
         if (ripples[i]->radius > ofGetWidth()) {
+            delete ripples[0];
             ripples.pop_front();
         }
     }
@@ -48,7 +45,7 @@ void StAnimRipple::draw(){
     
     ofEnableBlendMode(OF_BLENDMODE_ALPHA);
     
-    //post.begin();
+    post->begin();
     
     ofSetColor(baseColor);
     ofRect(0, 0, ofGetWidth(), ofGetHeight());
@@ -56,7 +53,7 @@ void StAnimRipple::draw(){
     for (int i = 0; i < ripples.size(); i++) {
         ripples[i]->draw();
     }
-    //post.end();
+    post->end();
     
     app->drawFbo->fbo.end();
 }
@@ -70,4 +67,13 @@ void StAnimRipple::guiEvent(ofxUIEventArgs &e){
 
 void StAnimRipple::stateExit(){
     gui->setVisible(false);
+    delete post;
 }
+
+void StAnimRipple::stateEnter(){
+    post = new PostProcessing();
+    post->init(ofGetWidth(), ofGetHeight());
+    bloom = post->createPass<BloomPass>();
+    bloom->setEnabled(true);
+}
+

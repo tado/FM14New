@@ -16,15 +16,9 @@ void StAnimFade::setup(){
     gui->autoSizeToFitWidgets();
     gui->setVisible(false);
     
-    /*
-    post.init(ofGetWidth(), ofGetHeight());
-    bloom = post.createPass<BloomPass>();
-    bloom->setEnabled(true);
-     */
-    
     app = ((ofApp*)ofGetAppPtr());
     
-    rectNum = 20;
+    rectNum = 60;
     
     for (int i = 0; i < rectNum; i++) {
         SlideRect *r = new SlideRect(ofRandom(-4, 4));
@@ -50,7 +44,7 @@ void StAnimFade::draw(){
     ofDisableAlphaBlending();
     ofClear(0, 0, 0);
     
-    // post.begin();
+    post->begin();
     //ofEnableDepthTest();
     ofEnableBlendMode(OF_BLENDMODE_ALPHA);
 
@@ -60,7 +54,7 @@ void StAnimFade::draw(){
         rects[i]->draw();
     }
     
-    // post.end();
+    post->end();
     
     app->drawFbo->fbo.end();
 }
@@ -74,4 +68,12 @@ void StAnimFade::guiEvent(ofxUIEventArgs &e){
 
 void StAnimFade::stateExit(){
     gui->setVisible(false);
+    delete post;
+}
+
+void StAnimFade::stateEnter(){
+    post = new PostProcessing();
+    post->init(ofGetWidth(), ofGetHeight());
+    bloom = post->createPass<BloomPass>();
+    bloom->setEnabled(true);
 }

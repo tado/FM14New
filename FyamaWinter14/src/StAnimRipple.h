@@ -38,12 +38,13 @@ public:
     void update();
     void draw();
     void stateExit();
+    void stateEnter();
     void guiEvent(ofxUIEventArgs &e);
     
     ofxUICanvas *gui;
     ofApp *app;
     ofEasyCam cam;
-    ofxPostProcessing post;
+    ofxPostProcessing *post;
     BloomPass::Ptr bloom;
     ofColor baseColor;
     

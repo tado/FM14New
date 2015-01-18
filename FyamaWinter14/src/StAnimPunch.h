@@ -24,7 +24,7 @@ public:
         col.setHsb(col.getHue(), col.getSaturation(), col.getBrightness(), alpha);
         ofSetColor(col);
         ofCircle(loc, radius);
-        alpha -= 1;
+        //alpha -= 1;
         if (alpha < 0) {
             alpha = 0;
         }
@@ -51,7 +51,7 @@ public:
     ofxUICanvas *gui;
     ofApp *app;
     ofEasyCam cam;
-    ofxPostProcessing post;
+    ofxPostProcessing *post;
     BloomPass::Ptr bloom;
     
     deque<Punch *> punch;

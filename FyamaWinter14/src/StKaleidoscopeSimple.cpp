@@ -22,15 +22,6 @@ void StKaleidoscopeSimple::setup(){
     gui->setVisible(false);
     ofAddListener(gui->newGUIEvent,this,&StKaleidoscopeSimple::guiEvent);
     
-    post.init(ofGetWidth(), ofGetHeight());
-    
-    kaleido = post.createPass<KaleidoscopePass>();
-    kaleido->setSegments(8.0);
-    kaleido->setEnabled(true);
-    
-    bloom = post.createPass<BloomPass>();
-    bloom->setEnabled(true);
-    
     app = ((ofApp*)ofGetAppPtr());
 }
 
@@ -51,7 +42,7 @@ void StKaleidoscopeSimple::draw(){
     ofDisableAlphaBlending();
     ofClear(0,0,0);
     //ofTranslate(0, -app->drawFbo->top);
-    post.begin(cam);
+    post->begin(cam);
     ofPushMatrix();
     ofScale(zoom, zoom);
     ofColor col; col.setHsb(controlHue * 255, sat * 255, br * 255);
@@ -59,7 +50,7 @@ void StKaleidoscopeSimple::draw(){
     ofRotateZ(ofGetElapsedTimef() * 20.0);
     app->blackmagic->colorTexture.draw(-app->blackmagic->width/2, -app->blackmagic->height/2, app->blackmagic->width, app->blackmagic->height);
     ofPopMatrix();
-    post.end();
+    post->end();
     app->drawFbo->fbo.end();
     ofDisableBlendMode();
     
@@ -75,4 +66,17 @@ void StKaleidoscopeSimple::guiEvent(ofxUIEventArgs &e){
 
 void StKaleidoscopeSimple::stateExit(){
     gui->setVisible(false);
+    delete post;
+}
+
+void StKaleidoscopeSimple::stateEnter(){
+    post = new ofxPostProcessing();
+    post->init(ofGetWidth(), ofGetHeight());
+    
+    kaleido = post->createPass<KaleidoscopePass>();
+    kaleido->setSegments(8.0);
+    kaleido->setEnabled(true);
+    
+    bloom = post->createPass<BloomPass>();
+    bloom->setEnabled(true);
 }

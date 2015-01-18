@@ -12,6 +12,7 @@ public:
     void update();
     void draw();
     void stateExit();
+    void stateEnter();
     void createMesh();
     void guiEvent(ofxUIEventArgs &e);
     
@@ -26,6 +27,6 @@ public:
     ofTexture tex;
     float stepSize, xSteps, ySteps;
     vector<ofVec3f> currentVertex;
-    ofxPostProcessing post;
+    ofxPostProcessing *post;
     ofVec3f rotationL, rotationR;
 };

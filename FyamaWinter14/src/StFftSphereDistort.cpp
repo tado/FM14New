@@ -27,9 +27,6 @@ void StFftSphereDistort::setup(){
     ofAddListener(gui->newGUIEvent,this,&StFftSphereDistort::guiEvent);
     app = ((ofApp*)ofGetAppPtr());
     
-    post.init(app->drawFbo->width, app->drawFbo->height);
-    post.createPass<BloomPass>()->setEnabled(true);
-    
     cam.setFarClip(10000);
     
     int width = 512;
@@ -84,7 +81,7 @@ void StFftSphereDistort::draw(){
     
     app->drawFbo->fbo.begin();
     app->drawFbo->blendMode = 0;
-    post.begin(cam);
+    post->begin(cam);
     ofScale(zoom, zoom);
     /*
     ofRotateX(ofGetElapsedTimef() * shiftspeed);
@@ -117,7 +114,7 @@ void StFftSphereDistort::draw(){
 
     ofDisableDepthTest();
     glDisable(GL_CULL_FACE);
-    post.end();
+    post->end();
     app->drawFbo->fbo.end();
     ofDisableAlphaBlending();
 }
@@ -143,4 +140,11 @@ void StFftSphereDistort::createMesh(){
 
 void StFftSphereDistort::stateExit(){
     gui->setVisible(false);
+    delete post;
+}
+
+void StFftSphereDistort::stateEnter(){
+    post = new ofxPostProcessing();
+    post->init(app->drawFbo->width, app->drawFbo->height);
+    post->createPass<BloomPass>()->setEnabled(true);
 }

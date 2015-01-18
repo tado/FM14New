@@ -16,6 +16,7 @@ public:
     void createMesh();
     void guiEvent(ofxUIEventArgs &e);
     void stateExit();
+    void stateEnter();
     
     ofPixels pixels;
     ofTexture tex;
@@ -36,7 +37,7 @@ public:
     float stepSize, xSteps, ySteps;
     vector<ofVec2f> currentVertex;
     
-    ofxPostProcessing post;
+    ofxPostProcessing *post;
     BloomPass::Ptr bloom;
     
     ofApp *app;
