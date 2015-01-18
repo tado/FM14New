@@ -50,7 +50,7 @@
 //--------------------------------------------------------------
 void ofApp::setup(){
 
-    // ofSetWindowPosition(1920, 0);
+    ofSetWindowPosition(1920, 0);
     ofBackground(0);
     
     // FFT
