@@ -11,7 +11,7 @@ public:
         loc = _loc;
         speed = ofVec3f(ofRandom(6, 12), 0, 0);
         radius = 0;
-        col.setHsb(ofRandom(255), 255, 255, 225);
+        col.setHsb(ofRandom(255), 255, 255, 200);
         circleRes = int(ofRandom(3, 8));
         radius = powf(ofRandom(4, 20), 2.0);
         rotSpeed = ofVec3f(ofRandom(-20, 20),

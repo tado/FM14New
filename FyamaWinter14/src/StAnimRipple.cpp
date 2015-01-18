@@ -43,16 +43,14 @@ void StAnimRipple::draw(){
     ofDisableAlphaBlending();
     ofClear(0,0,0);
     
-    ofEnableBlendMode(OF_BLENDMODE_ALPHA);
-    
     post->begin();
-    
+    ofEnableBlendMode(OF_BLENDMODE_ALPHA);
     ofSetColor(baseColor);
     ofRect(0, 0, ofGetWidth(), ofGetHeight());
-    
     for (int i = 0; i < ripples.size(); i++) {
         ripples[i]->draw();
     }
+    ofDisableAlphaBlending();
     post->end();
     
     app->drawFbo->fbo.end();

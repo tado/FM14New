@@ -49,8 +49,11 @@
 
 //--------------------------------------------------------------
 void ofApp::setup(){
+    simulateMode = true;
 
-    ofSetWindowPosition(1920, 0);
+    if (!simulateMode) {
+        ofSetWindowPosition(1920, 0);
+    }
     ofBackground(0);
     
     // FFT
@@ -58,7 +61,7 @@ void ofApp::setup(){
     fft = new FFTData(bufferSize);
     
     // Blackmagic
-    blackmagic = new BlackmagicCapture(1920, 1080, 59.94);  
+    blackmagic = new BlackmagicCapture(1920, 1080, 59.94);
     
     // FBO
     drawFbo = new DrawFbo();

@@ -45,15 +45,13 @@ void StAnimFade::draw(){
     ofClear(0, 0, 0);
     
     post->begin();
-    //ofEnableDepthTest();
     ofEnableBlendMode(OF_BLENDMODE_ALPHA);
-
     ofSetColor(baseColor);
     ofRect(0, 0, ofGetWidth(), ofGetHeight());
     for (int i = 0; i < rects.size(); i++) {
         rects[i]->draw();
     }
-    
+    ofDisableAlphaBlending();
     post->end();
     
     app->drawFbo->fbo.end();

@@ -2,7 +2,11 @@
 #include "ofApp.h"
 
 BlackmagicCapture::BlackmagicCapture(int _width, int _height, float _framerate){
-    inputMode = 0;
+    if(((ofApp*)ofGetAppPtr())->simulateMode == true){
+        inputMode = 2;
+    } else {
+        inputMode = 0;
+    }
     
     width = _width;
     height = _height;

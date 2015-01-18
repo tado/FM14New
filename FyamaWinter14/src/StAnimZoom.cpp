@@ -61,14 +61,14 @@ void StAnimZoom::draw(){
     ofDisableAlphaBlending();
     ofClear(0,0,0);
     
-    ofEnableBlendMode(OF_BLENDMODE_ALPHA);
-    
     post->begin(cam);
+    ofEnableBlendMode(OF_BLENDMODE_ALPHA);
     ofEnableDepthTest();
     for (int i = 0; i < flows.size(); i++) {
         flows[i]->draw();
     }
     ofDisableDepthTest();
+    ofDisableAlphaBlending();
     post->end();
     
     app->drawFbo->fbo.end();

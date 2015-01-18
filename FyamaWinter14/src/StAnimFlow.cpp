@@ -39,27 +39,6 @@ void StAnimFlow::update(){
             flows[i]->loc.x = -ofGetWidth() / 2.0;
         }
     }
-    /*
-    if (ofGetFrameNum() % 5 == 0) {
-        float initPos;
-        if (direction) {
-            initPos = -ofGetWidth() / 4.0;
-        } else {
-            initPos = ofGetWidth()  + ofGetWidth() / 4.0;
-        }
-        
-        FlowObject *flow = new FlowObject(ofVec3f(initPos, ofRandom(ofGetHeight()), ofRandom(ofGetHeight()/2.0)));
-        flows.push_back(flow);
-    }
-    
-    for (int i = 0; i < flows.size(); i++) {
-        flows[i]->update(direction);
-        if (flows.size() > flows[i]->flowMax) {
-            delete flows[0];
-            flows.pop_front();
-        }
-    }
-     */
 }
 
 void StAnimFlow::draw(){
@@ -69,14 +48,14 @@ void StAnimFlow::draw(){
     ofDisableAlphaBlending();
     ofClear(0,0,0);
     
-    ofEnableBlendMode(OF_BLENDMODE_ALPHA);
-    
     post->begin();
+    ofEnableBlendMode(OF_BLENDMODE_ALPHA);
     ofEnableDepthTest();
     for (int i = 0; i < flows.size(); i++) {
         flows[i]->draw();
     }
     ofDisableDepthTest();
+    ofDisableAlphaBlending();
     post->end();
     
     app->drawFbo->fbo.end();

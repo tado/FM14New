@@ -39,6 +39,7 @@ public:
     DrawFbo *drawFbo;
     OscControl *oscControl;
     int srcMix, fxMix;
+    bool simulateMode;
 
     int bufferSize;
     FFTData *fft;

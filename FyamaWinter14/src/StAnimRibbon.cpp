@@ -83,6 +83,7 @@ void StAnimRibbon::draw(){
         ofPopMatrix();
     }
     ofDisableDepthTest();
+    ofDisableAlphaBlending();
     post->end();
     
     app->drawFbo->fbo.end();
