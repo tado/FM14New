@@ -72,12 +72,12 @@ void StAnimPunch::stateEnter(){
         delete punch[i];
     }
     punch.clear();
-    int num = 6;
+    int num = 20;
     for (int i = 0; i < num; i++) {
         //Punch *p = new Punch(ofVec2f(ofRandom(ofGetWidth()), ofRandom(ofGetHeight())), 20.0);
         int hue = ofRandom(255);
-        Punch *pr = new Punch(ofVec2f(ofGetWidth()/6, ofGetHeight()/2), 8 * (num - i + 1), hue);
-        Punch *pl = new Punch(ofVec2f(ofGetWidth()/6 * 5, ofGetHeight()/2), 8 * (num - i + 1), hue);
+        Punch *pr = new Punch(ofVec2f(ofGetWidth()/6, ofGetHeight()/2), powf((num - i), 1.4), hue);
+        Punch *pl = new Punch(ofVec2f(ofGetWidth()/6 * 5, ofGetHeight()/2), powf((num - i), 1.4), hue);
         punch.push_back(pr);
         punch.push_back(pl);
     }

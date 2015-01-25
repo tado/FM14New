@@ -11,8 +11,7 @@ public:
         loc = _loc;
         zoomSpeed = _zoomSpeed;
         radius = 0;
-        col.setHsb(_hue, 255, 255, 255);
-        alpha = 220;
+        col.setHsb(_hue, 255, 255);
     }
     
     void update(){
@@ -21,13 +20,9 @@ public:
     
     void draw(){
         ofSetCircleResolution(64);
-        col.setHsb(col.getHue(), col.getSaturation(), col.getBrightness(), alpha);
+        col.setHsb(col.getHue(), col.getSaturation(), col.getBrightness(), 200);
         ofSetColor(col);
         ofCircle(loc, radius);
-        //alpha -= 1;
-        if (alpha < 0) {
-            alpha = 0;
-        }
     }
     
     ofVec2f loc;
