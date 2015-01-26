@@ -437,7 +437,6 @@
 		185D167D1A19CE3200BC748A /* StTrianglePixelate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StTrianglePixelate.h; sourceTree = "<group>"; };
 		18603D721A189198001F097D /* StRgbDelay.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StRgbDelay.cpp; sourceTree = "<group>"; };
 		18603D731A189198001F097D /* StRgbDelay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StRgbDelay.h; sourceTree = "<group>"; };
-		187084D91A43BA4A00876B62 /* FukuyamaWinter14Debug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FukuyamaWinter14Debug.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1872C170F254B6602E12CDDD /* DeckLinkAPIDiscovery.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = DeckLinkAPIDiscovery.h; path = ../../../addons/ofxBlackmagic/libs/DeckLink/include/DeckLinkAPIDiscovery.h; sourceTree = SOURCE_ROOT; };
 		187532A11A450F91001A18A8 /* StKaleidoscopeSimple.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StKaleidoscopeSimple.cpp; sourceTree = "<group>"; };
 		187532A21A450F91001A18A8 /* StKaleidoscopeSimple.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StKaleidoscopeSimple.h; sourceTree = "<group>"; };
@@ -479,6 +478,7 @@
 		188EF9B91A47874400D2EE60 /* StFftDrawRect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StFftDrawRect.h; sourceTree = "<group>"; };
 		188EF9BE1A47FF2900D2EE60 /* StCvOpMeshColor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StCvOpMeshColor.cpp; sourceTree = "<group>"; };
 		188EF9BF1A47FF2900D2EE60 /* StCvOpMeshColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StCvOpMeshColor.h; sourceTree = "<group>"; };
+		189D77BB1A74CED900FB3E7C /* FukuyamaWinter14Debug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FukuyamaWinter14Debug.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18D0E9241A06617300072012 /* StCvOpDraw.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StCvOpDraw.cpp; sourceTree = "<group>"; };
 		18D0E9251A06617300072012 /* StCvOpDraw.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StCvOpDraw.h; sourceTree = "<group>"; };
 		18D0E92A1A06653300072012 /* Particle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Particle.cpp; sourceTree = "<group>"; };
@@ -2208,7 +2208,7 @@
 				E4EEC9E9138DF44700A80321 /* openFrameworks */,
 				BB4B014C10F69532006C3DED /* addons */,
 				E45BE5980E8CC70C009D7055 /* frameworks */,
-				187084D91A43BA4A00876B62 /* FukuyamaWinter14Debug.app */,
+				189D77BB1A74CED900FB3E7C /* FukuyamaWinter14Debug.app */,
 			);
 			sourceTree = "<group>";
 		};
@@ -2339,7 +2339,7 @@
 			);
 			name = FukuyamaWinter14;
 			productName = myOFApp;
-			productReference = 187084D91A43BA4A00876B62 /* FukuyamaWinter14Debug.app */;
+			productReference = 189D77BB1A74CED900FB3E7C /* FukuyamaWinter14Debug.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
