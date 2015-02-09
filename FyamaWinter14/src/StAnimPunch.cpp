@@ -41,7 +41,9 @@ void StAnimPunch::draw(){
     
     ofEnableBlendMode(OF_BLENDMODE_ALPHA);
     
+    ofScale(1.0 / fxRatio, 1.0 / fxRatio);
     post->begin();
+    ofScale(fxRatio, fxRatio);
     for (int i = 0; i < punch.size(); i++) {
         punch[i]->draw();
     }
@@ -63,8 +65,9 @@ void StAnimPunch::stateExit(){
 }
 
 void StAnimPunch::stateEnter(){
+    fxRatio = 0.5;
     post = new PostProcessing();
-    post->init(ofGetWidth(), ofGetHeight());
+    post->init(ofGetWidth() * fxRatio, ofGetHeight() * fxRatio);
     bloom = post->createPass<BloomPass>();
     bloom->setEnabled(true);
     

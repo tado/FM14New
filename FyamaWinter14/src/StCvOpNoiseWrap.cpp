@@ -26,16 +26,6 @@ void StCvOpNoiseWrap::setup(){
     gui->setVisible(false);
     ofAddListener(gui->newGUIEvent,this,&StCvOpNoiseWrap::guiEvent);
     
-    post.init(ofGetWidth(), ofGetHeight());
-    
-    noise = post.createPass<NoiseWarpPass>();
-    noise->setEnabled(true);
-    
-    bloom = post.createPass<BloomPass>();
-    bloom->setEnabled(true);
-    
-    currentNoiseFreq = 2.0;
-    
     app = ((ofApp*)ofGetAppPtr());
 }
 
@@ -73,7 +63,8 @@ void StCvOpNoiseWrap::draw(){
     app->drawFbo->blendMode = 0;
     ofDisableAlphaBlending();
     ofClear(0,0,0);
-    post.begin(cam);
+    ofScale(1.0 / fxRatio, 1.0 / fxRatio);
+    post->begin(cam);
     ofPushMatrix();
     ofScale(zoom, zoom);
     ofColor col; col.setHsb(controlHue * 255, sat * 255, br * 255);
@@ -93,7 +84,7 @@ void StCvOpNoiseWrap::draw(){
 
     app->blackmagic->colorTexture.draw(-app->blackmagic->width/2, -app->blackmagic->height/2, app->blackmagic->width, app->blackmagic->height);
     ofPopMatrix();
-    post.end();
+    post->end();
     app->drawFbo->fbo.end();
     ofDisableBlendMode();
     
@@ -109,4 +100,20 @@ void StCvOpNoiseWrap::guiEvent(ofxUIEventArgs &e){
 
 void StCvOpNoiseWrap::stateExit(){
     gui->setVisible(false);
+    delete post;
+}
+
+void StCvOpNoiseWrap::stateEnter(){
+    fxRatio = 0.5;
+    post = new ofxPostProcessing();
+    
+    post->init(ofGetWidth() * fxRatio, ofGetHeight() * fxRatio);
+    
+    noise = post->createPass<NoiseWarpPass>();
+    noise->setEnabled(true);
+    
+    bloom = post->createPass<BloomPass>();
+    bloom->setEnabled(true);
+    
+    currentNoiseFreq = 2.0;
 }

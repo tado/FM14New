@@ -21,7 +21,6 @@ void StKaleidoscopeSimple::setup(){
     gui->autoSizeToFitWidgets();
     gui->setVisible(false);
     ofAddListener(gui->newGUIEvent,this,&StKaleidoscopeSimple::guiEvent);
-    
     app = ((ofApp*)ofGetAppPtr());
 }
 
@@ -42,6 +41,7 @@ void StKaleidoscopeSimple::draw(){
     ofDisableAlphaBlending();
     ofClear(0,0,0);
     //ofTranslate(0, -app->drawFbo->top);
+    ofScale(1.0 / fxRatio, 1.0 / fxRatio);
     post->begin(cam);
     ofPushMatrix();
     ofScale(zoom, zoom);
@@ -70,8 +70,10 @@ void StKaleidoscopeSimple::stateExit(){
 }
 
 void StKaleidoscopeSimple::stateEnter(){
+    fxRatio = 0.5;
+    
     post = new ofxPostProcessing();
-    post->init(ofGetWidth(), ofGetHeight());
+    post->init(ofGetWidth() * fxRatio, ofGetHeight() * fxRatio);
     
     kaleido = post->createPass<KaleidoscopePass>();
     kaleido->setSegments(8.0);

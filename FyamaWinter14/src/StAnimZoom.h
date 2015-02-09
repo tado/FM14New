@@ -63,6 +63,7 @@ public:
     ofEasyCam cam;
     ofxPostProcessing *post;
     BloomPass::Ptr bloom;
+    float fxRatio;
     
     deque<ZoomObject *> flows;
 };

@@ -51,6 +51,7 @@ public:
     ofxPostProcessing *post;
     BloomPass::Ptr bloom;
     ofColor baseColor;
+    float fxRatio;
     
     deque<SlideRect * > rects;
     int rectNum;

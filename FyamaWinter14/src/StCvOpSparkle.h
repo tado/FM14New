@@ -39,6 +39,7 @@ public:
     
     ofxPostProcessing *post;
     BloomPass::Ptr bloom;
+    float fxRatio;
     
     ofApp *app;
 };

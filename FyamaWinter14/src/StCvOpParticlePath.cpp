@@ -48,7 +48,8 @@ void StCvOpParticlePath::update(){
     polySigma = 1.5;
     
     ofPixelsRef pix = ((ofApp*)ofGetAppPtr())->blackmagic->colorPixels;
-    pix.resize(160, 90);
+    //pix.resize(160, 90);
+    pix.resize(80, 45);
     flow.setPyramidScale(pyrScale);
     flow.setNumLevels(levels);
     flow.setWindowSize(winsize);

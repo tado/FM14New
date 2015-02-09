@@ -11,7 +11,7 @@
 <Widget>
     <Kind>42</Kind>
     <Name>WIN SIZE</Name>
-    <Value>32</Value>
+    <Value>31</Value>
 </Widget>
 <Widget>
     <Kind>42</Kind>
@@ -51,7 +51,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>MAX DIST</Name>
-    <Value>10.520833969</Value>
+    <Value>5.312500000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>

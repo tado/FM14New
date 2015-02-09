@@ -13,6 +13,7 @@ public:
     void update();
     void draw();
     void stateExit();
+    void stateEnter();
     void guiEvent(ofxUIEventArgs &e);
     
     ofxUICanvas *gui;
@@ -20,7 +21,7 @@ public:
     
     float fftSum;
     ofEasyCam cam;
-    ofxPostProcessing post;
+    ofxPostProcessing *post;
     NoiseWarpPass::Ptr noise;
     BloomPass::Ptr bloom;
     
@@ -36,4 +37,5 @@ public:
     bool OPTFLOW_FARNEBACK_GAUSSIAN;
     
     float currentNoiseFreq;
+    float fxRatio;
 };

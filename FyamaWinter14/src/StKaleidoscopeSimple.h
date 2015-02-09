@@ -23,4 +23,5 @@ public:
     ofxPostProcessing *post;
     KaleidoscopePass::Ptr kaleido;
     BloomPass::Ptr bloom;
+    float fxRatio;
 };

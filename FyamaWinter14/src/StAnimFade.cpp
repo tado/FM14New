@@ -44,7 +44,9 @@ void StAnimFade::draw(){
     ofDisableAlphaBlending();
     ofClear(0, 0, 0);
     
+    ofScale(1.0 / fxRatio, 1.0 / fxRatio);
     post->begin();
+    ofScale(fxRatio, fxRatio);
     ofEnableBlendMode(OF_BLENDMODE_ALPHA);
     ofSetColor(baseColor);
     ofRect(0, 0, ofGetWidth(), ofGetHeight());
@@ -70,8 +72,9 @@ void StAnimFade::stateExit(){
 }
 
 void StAnimFade::stateEnter(){
+    fxRatio = 0.5;
     post = new PostProcessing();
-    post->init(ofGetWidth(), ofGetHeight());
+    post->init(ofGetWidth() * fxRatio, ofGetHeight() * fxRatio);
     bloom = post->createPass<BloomPass>();
     bloom->setEnabled(true);
 }

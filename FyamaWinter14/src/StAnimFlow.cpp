@@ -43,12 +43,15 @@ void StAnimFlow::update(){
 
 void StAnimFlow::draw(){
     gui->setVisible(getSharedData().guiVisible);
+    
     app->drawFbo->fbo.begin();
     app->drawFbo->blendMode = 1;
     ofDisableAlphaBlending();
     ofClear(0,0,0);
-    
+
+    ofScale(1.0 / fxRatio, 1.0 / fxRatio);
     post->begin();
+    ofScale(1.0 * fxRatio, 1.0 * fxRatio);
     ofEnableBlendMode(OF_BLENDMODE_ALPHA);
     ofEnableDepthTest();
     for (int i = 0; i < flows.size(); i++) {
@@ -79,8 +82,9 @@ void StAnimFlow::stateExit(){
 }
 
 void StAnimFlow::stateEnter(){
+    fxRatio = 0.5;
     post = new PostProcessing();
-    post->init(ofGetWidth(), ofGetHeight());
+    post->init(ofGetWidth() * fxRatio, ofGetHeight() * fxRatio);
     bloom = post->createPass<BloomPass>();
     bloom->setEnabled(true);
 }

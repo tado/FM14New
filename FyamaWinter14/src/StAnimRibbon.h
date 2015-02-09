@@ -29,4 +29,5 @@ public:
     deque<ofVec3f> lastPos;
     deque<ofVec3f> speed;
     int maxRibbon;
+    float fxRatio;
 };

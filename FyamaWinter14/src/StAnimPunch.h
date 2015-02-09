@@ -48,6 +48,7 @@ public:
     ofEasyCam cam;
     ofxPostProcessing *post;
     BloomPass::Ptr bloom;
+    float fxRatio;
     
     deque<Punch *> punch;
 };

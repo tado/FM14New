@@ -73,6 +73,7 @@ void StAnimRibbon::draw(){
     ofDisableAlphaBlending();
     ofClear(0,0,0);
     
+    ofScale(1.0 / fxRatio, 1.0 / fxRatio);
     post->begin(cam);
     ofEnableDepthTest();
     ofEnableBlendMode(OF_BLENDMODE_ADD);
@@ -102,8 +103,9 @@ void StAnimRibbon::stateExit(){
 }
 
 void StAnimRibbon::stateEnter(){
+    fxRatio = 0.5;
     post = new PostProcessing();
-    post->init(ofGetWidth(), ofGetHeight());
+    post->init(ofGetWidth() * fxRatio, ofGetHeight() * fxRatio);
     bloom = post->createPass<BloomPass>();
     bloom->setEnabled(true);
 }

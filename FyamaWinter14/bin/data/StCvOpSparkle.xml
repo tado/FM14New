@@ -11,7 +11,7 @@
 <Widget>
     <Kind>42</Kind>
     <Name>WIN SIZE</Name>
-    <Value>30</Value>
+    <Value>22</Value>
 </Widget>
 <Widget>
     <Kind>42</Kind>
@@ -26,7 +26,7 @@
 <Widget>
     <Kind>42</Kind>
     <Name>SKIP</Name>
-    <Value>10</Value>
+    <Value>8</Value>
 </Widget>
 <Widget>
     <Kind>42</Kind>
@@ -36,12 +36,12 @@
 <Widget>
     <Kind>4</Kind>
     <Name>THRESH</Name>
-    <Value>1.000000000</Value>
+    <Value>1.302083373</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>RADIUS</Name>
-    <Value>3.281250000</Value>
+    <Value>2.708333492</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -51,7 +51,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>ACCEL</Name>
-    <Value>1.200000048</Value>
+    <Value>0.687500000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
