@@ -48,8 +48,8 @@ void StCvOpParticlePath::update(){
     polySigma = 1.5;
     
     ofPixelsRef pix = ((ofApp*)ofGetAppPtr())->blackmagic->colorPixels;
-    //pix.resize(160, 90);
-    pix.resize(80, 45);
+    pix.resize(160, 90);
+    //pix.resize(80, 45);
     flow.setPyramidScale(pyrScale);
     flow.setNumLevels(levels);
     flow.setWindowSize(winsize);
@@ -86,7 +86,10 @@ void StCvOpParticlePath::draw(){
     
     app->drawFbo->fbo.begin();
     app->drawFbo->blendMode = 1;
+    
+    ofScale(1.0 / fxRatio, 1.0 / fxRatio);
     post->begin();
+    ofScale(fxRatio, fxRatio);
     ofDisableAlphaBlending();
     ofClear(0,0,0);
     ofTranslate(0, -app->drawFbo->top);
@@ -178,8 +181,9 @@ void StCvOpParticlePath::stateExit(){
 }
 
 void StCvOpParticlePath::stateEnter(){
+    fxRatio = 1.0;
     post = new ofxPostProcessing();
-    post->init(ofGetWidth(), ofGetHeight());
+    post->init(ofGetWidth() * fxRatio, ofGetHeight() * fxRatio);
     bloom = post->createPass<BloomPass>();
     bloom->setEnabled(true);
 }

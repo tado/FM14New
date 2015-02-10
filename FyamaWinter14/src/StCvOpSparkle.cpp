@@ -53,8 +53,8 @@ void StCvOpSparkle::update(){
     polySigma = 1.5;
     
     ofPixelsRef pix = ((ofApp*)ofGetAppPtr())->blackmagic->colorPixels;
-    //pix.resize(160, 90);
-    pix.resize(80, 45);
+    pix.resize(160, 90);
+    //pix.resize(40, 22);
     flow.setPyramidScale(pyrScale);
     flow.setNumLevels(levels);
     flow.setWindowSize(winsize);
@@ -94,6 +94,7 @@ void StCvOpSparkle::draw(){
     
     ofScale(1.0 / fxRatio, 1.0 / fxRatio);
     post->begin();
+    ofScale(fxRatio, fxRatio);
     ofDisableAlphaBlending();
     ofClear(0,0,0);
     ofTranslate(0, -app->drawFbo->top);
@@ -108,7 +109,7 @@ void StCvOpSparkle::draw(){
             int x = ofRandom(flow.getWidth()-skip);
             int y = ofRandom(flow.getHeight()-skip);
             ofRectangle region = ofRectangle(x, y, skip, skip);
-            ofVec2f average = flow.getAverageFlowInRegion(region) * fxRatio;
+            ofVec2f average = flow.getAverageFlowInRegion(region);
             
             if (average.length() > thresh) {
                 average = ofVec2f(0, 0);
@@ -120,7 +121,7 @@ void StCvOpSparkle::draw(){
                 
                 NoteParticle *p = new NoteParticle();
                 p->setup(ofVec2f(x + ofRandom(skip), y + ofRandom(skip)), ofVec2f(average.x * accel, average.y * accel), col);
-                p->radius = (abs(average.x) + abs(average.y)) * radius * fxRatio;
+                p->radius = (abs(average.x) + abs(average.y)) * radius;
                 p->friction = friction;
                 if (abs(p->radius) > skip) {
                     p->radius = skip;
@@ -176,5 +177,5 @@ void StCvOpSparkle::stateEnter(){
     post = new ofxPostProcessing();
     post->init(ofGetWidth() * fxRatio, ofGetHeight() * fxRatio);
     bloom = post->createPass<BloomPass>();
-    bloom->setEnabled(true);
+    bloom->setEnabled(false);
 }

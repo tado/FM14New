@@ -24,4 +24,6 @@ public:
     KaleidoscopePass::Ptr kaleido;
     NoiseWarpPass::Ptr noise;
     BloomPass::Ptr bloom;
+    
+    float fxRatio;
 };

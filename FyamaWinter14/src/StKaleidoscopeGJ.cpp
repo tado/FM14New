@@ -54,6 +54,8 @@ void StKaleidoscopeGJ::draw(){
     ofTranslate(0, -app->drawFbo->top);
     //ofEnableBlendMode(OF_BLENDMODE_ADD);
     ofTranslate(0, -app->drawFbo->top);
+
+    ofScale(1.0 / fxRatio, 1.0 / fxRatio);
     post->begin(cam);
     ofPushMatrix();
     ofScale(zoom, zoom);
@@ -82,8 +84,10 @@ void StKaleidoscopeGJ::stateExit(){
 }
 
 void StKaleidoscopeGJ::stateEnter(){
+    fxRatio = 0.5;
+    
     post = new ofxPostProcessing();
-    post->init(ofGetWidth(), ofGetHeight());
+    post->init(ofGetWidth() * fxRatio, ofGetHeight() * fxRatio);
     
     kaleido = post->createPass<KaleidoscopePass>();
     kaleido->setSegments(3.0);
