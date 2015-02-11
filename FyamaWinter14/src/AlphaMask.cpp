@@ -123,12 +123,23 @@ void AlphaMask::maskCircle(){
     ofApp *app = ((ofApp*)ofGetAppPtr());
     srcTex = app->blackmagic->colorTexture;
     
+    ofFbo srcFbo;
+    srcFbo.allocate(1920, 1080 / 2.0);
+    srcFbo.begin();
+    ofClear(0, 0, 0);
+    ofPushMatrix();
+    ofScale(1.0, 0.5);
+    srcTex.draw(0, 0);
+    ofPopMatrix();
+    srcFbo.end();
+    
     fbo.begin();
     ofClear(0, 0, 0);
     maskShader.begin();
     
     glActiveTexture(GL_TEXTURE0_ARB);
-    srcTex.bind();
+    //srcTex.bind();
+    srcFbo.getTextureReference().bind();
     
     glActiveTexture(GL_TEXTURE1_ARB);
     mask.getTextureReference().bind();
@@ -146,11 +157,11 @@ void AlphaMask::maskCircle(){
     glMultiTexCoord2d(GL_TEXTURE1_ARB, mask.getWidth() - maskOffsetX, maskOffsetY);
     glVertex2f(1920, 0);
     
-    glMultiTexCoord2d(GL_TEXTURE0_ARB, srcTex.getWidth(), srcTex.getHeight());
+    glMultiTexCoord2d(GL_TEXTURE0_ARB, srcTex.getWidth(), srcTex.getHeight() / 2.0);
     glMultiTexCoord2d(GL_TEXTURE1_ARB, mask.getWidth() - maskOffsetX, mask.getHeight() - maskOffsetY);
     glVertex2f( 1920, 1080);
     
-    glMultiTexCoord2d(GL_TEXTURE0_ARB, 0, srcTex.getHeight());
+    glMultiTexCoord2d(GL_TEXTURE0_ARB, 0, srcTex.getHeight() / 2.0);
     glMultiTexCoord2d(GL_TEXTURE1_ARB, maskOffsetX, mask.getHeight() - maskOffsetY);
     glVertex2f(0, 1080);
     

@@ -49,7 +49,7 @@
 
 //--------------------------------------------------------------
 void ofApp::setup(){
-    simulateMode = true;
+    simulateMode = false;
 
     if (!simulateMode) {
         ofSetWindowPosition(1920, 0);
