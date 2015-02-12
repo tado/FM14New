@@ -21,7 +21,7 @@ void StAnimZoom::setup(){
     for (int i = 0; i < 100; i++) {
         ZoomObject *flow = new ZoomObject(ofVec3f(ofRandom(-ofGetHeight() / 4.0, ofGetHeight() / 4.0),
                                                   ofRandom(-ofGetHeight() / 4.0, ofGetHeight() / 4.0),
-                                                  ofRandom(-500, 1000)));
+                                                  ofRandom(-250, 1000)));
         flows.push_back(flow);
     }
     
@@ -32,7 +32,7 @@ void StAnimZoom::update(){
     for (int i = 0; i < flows.size(); i++) {
         flows[i]->update();
         if (flows[i]->loc.z > 1000) {
-            flows[i]->loc.z = -500;
+            flows[i]->loc.z = -250;
         }
     }
     
