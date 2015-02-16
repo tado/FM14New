@@ -9,7 +9,7 @@ class ZoomObject {
 public:
     ZoomObject(ofVec2f _loc){
         loc = _loc;
-        speed = ofVec3f(0, 0, ofRandom(2, 5));
+        speed = ofVec3f(0, 0, ofRandom(6, 12));
         radius = 0;
         col.setHsb(ofRandom(255), 255, 255, 200);
         circleRes = int(ofRandom(3, 8));

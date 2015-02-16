@@ -30,7 +30,7 @@ void StAnimRibbon::update(){
                               ofRandom(-ofGetWidth() / 4.0, ofGetWidth() / 4.0),
                               ofRandom(-ofGetWidth() / 4.0, ofGetWidth() / 4.0),
                               ofGetWidth() / 4.0);
-        ofVec3f sp = ofVec3f(0, 0, ofRandom(10, 20));
+        ofVec3f sp = ofVec3f(0, 0, ofRandom(20, 40));
         speed.push_back(sp);
         
         float ss = ofRandom(-5, 5);
