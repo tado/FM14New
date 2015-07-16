@@ -52,7 +52,9 @@ void ofApp::setup(){
     simulateMode = false;
 
     if (!simulateMode) {
+        ofToggleFullscreen();
         ofSetWindowPosition(1920, 0);
+        ofSetWindowShape(1920*3, 1080);
     }
     ofBackground(0);
     
@@ -61,7 +63,7 @@ void ofApp::setup(){
     fft = new FFTData(bufferSize);
     
     // Blackmagic
-    blackmagic = new BlackmagicCapture(1920, 1080, 59.94);
+    blackmagic = new BlackmagicCapture(1920, 1080, 60);
     
     // FBO
     drawFbo = new DrawFbo();

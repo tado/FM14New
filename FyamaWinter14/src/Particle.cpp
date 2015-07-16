@@ -63,8 +63,8 @@ void Particle::bounceOffWalls(){
     
     float minx = 0;
     float miny = 0;
-    float maxx = ofGetWidth();
-    float maxy = ofGetHeight();
+    float maxx = 1920;
+    float maxy = 1080;
     
     if (position.x > maxx){
         position.x = maxx;
@@ -94,8 +94,8 @@ void Particle::bounceOffWalls(){
 void Particle::throughOfWalls(){
     float minx = 0;
     float miny = 0;
-    float maxx = ofGetWidth();
-    float maxy = ofGetHeight();
+    float maxx = 1920;
+    float maxy = 1080;
     if (position.x < minx) {
         position.x = maxx;
     }

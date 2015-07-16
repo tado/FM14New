@@ -99,7 +99,7 @@ void BlackmagicCapture::drawSub(){
         drawWidth = sourceWidth = ofGetWidth();
         ofPushMatrix();
         ofScale(1.0, 2.0);
-        fbo.getTextureReference().drawSubsection(0, drawTop, drawWidth, drawHeight, 0, sourceTop, sourceWidth, sourceHeight);
+        fbo.getTextureReference().drawSubsection(960, drawTop, drawWidth, drawHeight, 0, sourceTop, sourceWidth, sourceHeight);
         ofPopMatrix();
     }
 }

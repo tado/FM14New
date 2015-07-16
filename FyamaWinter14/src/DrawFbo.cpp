@@ -22,4 +22,6 @@ void DrawFbo::draw(){
     }
 
     fbo.draw(0, top);
+    fbo.draw(1920, top);
+    //fbo.draw(960, top);
 }

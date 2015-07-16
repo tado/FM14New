@@ -35,7 +35,10 @@ void AlphaMask::update(){
 void AlphaMask::draw(){
     ofApp *app = ((ofApp*)ofGetAppPtr());
     
+    ofPushMatrix();
+    ofTranslate(960, 0);
     // Circle Mask (Full HD or 1980 x 630)
+    
     if (app->screenMode == 0 || app->screenMode == 1) {
         maskCircle();
     }
@@ -43,8 +46,7 @@ void AlphaMask::draw(){
         maskRect();
     }
     
-    // Rect mask in 1980 x 630 
-    
+    // Rect mask in 1980 x 630
     // Top & Bottom mask
     if (app->screenMode == 1 || app->screenMode == 2) {
         ofSetColor(0);
@@ -55,6 +57,7 @@ void AlphaMask::draw(){
         ofRect(0, 0, 1920, 300);
         ofPopMatrix();
     }
+    ofPopMatrix();
 }
 
 void AlphaMask::maskRect(){
@@ -67,8 +70,8 @@ void AlphaMask::maskRect(){
     srcFbo.begin();
     ofClear(0, 0, 0);
     ofPushMatrix();
-    ofScale(1.0, 0.5);
-    srcTex.draw(0, 0);
+    //ofScale(1.0, 0.5);
+    srcTex.draw(0, 0, 1920, 1080 / 2.0);
     ofPopMatrix();
     srcFbo.end();
     
@@ -128,8 +131,8 @@ void AlphaMask::maskCircle(){
     srcFbo.begin();
     ofClear(0, 0, 0);
     ofPushMatrix();
-    ofScale(1.0, 0.5);
-    srcTex.draw(0, 0);
+    //ofScale(1.0, 0.5);
+    srcTex.draw(0, 0, 1920, 1080 / 2.0);
     ofPopMatrix();
     srcFbo.end();
     
@@ -142,12 +145,13 @@ void AlphaMask::maskCircle(){
     srcFbo.getTextureReference().bind();
     
     glActiveTexture(GL_TEXTURE1_ARB);
-    mask.getTextureReference().bind();
+    //mask.getTextureReference().bind();
+    rectMask[rectMaskNum].getTextureReference().bind();
     
     glBegin(GL_QUADS);
     
-    float maskOffsetX =  ofMap(app->oscControl->controlVal[3], 0, 127, -mask.getWidth(), mask.getWidth() / 3.0);
-    float maskOffsetY =  ofMap(app->oscControl->controlVal[3], 0, 127, -mask.getHeight(), mask.getHeight() / 3.0);
+    float maskOffsetX =  ofMap(app->oscControl->controlVal[3], 0, 127, -mask.getWidth(), mask.getWidth() / 2.0);
+    float maskOffsetY =  ofMap(app->oscControl->controlVal[3], 0, 127, -mask.getHeight(), mask.getHeight() / 2.0);
     
     glMultiTexCoord2d(GL_TEXTURE0_ARB, 0, 0);
     glMultiTexCoord2d(GL_TEXTURE1_ARB, maskOffsetX, maskOffsetY);
